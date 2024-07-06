@@ -1,0 +1,7 @@
+{
+    // Dummy tsconfig.json to shut up linter in vs.code
+    "compilerOptions": {
+        "esModuleInterop": true,
+        "moduleResolution": "node"
+    }
+}
