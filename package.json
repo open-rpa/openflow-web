@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "mkdir dist -p && cp -r src/* dist && webpack --mode production",
-    "watch": "mkdir dist -p && cp -r src/* dist && webpack -w"
+    "build": "rm -rf dist && mkdir dist -p && cp -r src/* dist && webpack --mode production",
+    "watch": "rm -rf dist && mkdir dist -p && cp -r src/* dist && webpack -w"
   },
   "repository": {
     "type": "git",
