@@ -50,6 +50,17 @@ export class jsutil {
             document.getElementsByTagName("head")[0].appendChild(script);
         });
     }
+    public static async loadStyle(url: string): Promise<void> {
+        return new Promise<void>(async (resolve) => {
+            var link = document.createElement("link")
+            link.rel = "stylesheet";
+            link.onload = function () {
+                resolve();
+            };
+            link.href = url;            
+            document.getElementsByTagName("head")[0].appendChild(link);
+        });
+    }
     public static async getScript(url: string): Promise<void> {
         return new Promise<void>(async (resolve, reject) => {
             $.getScript(url, () => {
@@ -3430,6 +3441,7 @@ export class EditFormCtrl extends entityCtrl<Form> {
             try {
                 const test = Formio.builder;
             } catch (error) {
+                // await jsutil.loadStyle("bootstrap-scope.css");
                 await jsutil.loadScript("formio.full.min.js");
             }
             try {

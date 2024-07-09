@@ -17,8 +17,8 @@
     <div class="form-inline" ng-show="ctrl.model.fbeditor!=true">
         <label for="sid" class="col-sm-2 control-label" translate lib="web">formtype</label>
         <div class="col-sm-4">
-            <select ng-model="ctrl.model.formData.display"  class="input-md" ng-change="ctrl.renderform()"
-            ng-disabled="ctrl.loading==true">
+            <select ng-model="ctrl.model.formData.display" class="input-md" ng-change="ctrl.renderform()"
+                ng-disabled="ctrl.loading==true">
                 <option>form</option>
                 <option>wizard</option>
                 <!-- <option>pdf</option> -->
@@ -38,103 +38,159 @@
             </div>
         </div>
     </div> -->
-    
-    <link scoped rel='stylesheet' href='bootstrap.css'>
-    <style scoped>
 
-    </style>
-    
-    <style scoped>
-        .dark-mode .formio-dialog-content {
-            background-color: var(--dm-card-bg-color) !important;
-        }
-    
-    
-        .dark-mode .formio-dialog {
-            color: unset !important;
-        }
-    
-        .dark-mode .table {
-            color: unset !important;
-        }
-    
-        .dark-mode .ace_editor {
-            background-color: var(--dm-card-bg-color) !important;
-        }
-    
-        .dark-mode .ace_gutter {
-            background-color: var(--dm-card-bg-color) !important;
-            color: unset !important;
-        }
-    
-        .dark-mode .ace-xcode {
-            color: unset !important;
-        }
-    
-        .dark-mode .choices__inner {
-            background-color: unset !important;
-        }
-    
-        .dark-mode .choices__input {
-            background-color: unset !important;
-        }
-    
-        .dark-mode .list-group-item {
-            background-color: unset !important;
-        }
-    
-    
-        /* .formio-dialog-content {
-            background: unset !important;
-        } */
-    
-        /* .formbuilder {
-            min-width: 900px;
-        } */
-    
-        /* .builder-sidebar {
-            width: 130px;
-        } */
-    
-        .builder-group-button {
-            text-align: left !important;
-        }
-    
-        .builder-sidebar_scroll {
-            position: sticky !important;
-            top: 15px !important;
-        }
-    
-        .builder-sidebar {
-            width: 130px !important;
-        }
-    
-        .form-builder-panel {
-            margin: unset !important;
-            padding: unset !important;
-        }
-        
-        .form-builder-panel .formcomponent {
-        line-height: 2rem !important;
-        margin-top: 2px !important;
-        padding-left: 0.5rem !important;
-        }
-    
-        .form-builder-panel .btn {
-            padding-left: 1rem !important;
-            padding-bottom: 2rem !important;
-        }
-        .dark-mode .bg-light {
-        background-color: #333 !important;
-        }
-        
-    </style>
-    
+    <!-- <link rel='stylesheet' href='bootstrap.css'> -->
+    <link rel='stylesheet' href='bootstrap-scope.css'>
+
     <p>
         <hr>
     </p>
     <div ng-show="ctrl.errormessage != ''"" class=" alert alert-danger" role="alert">{{ctrl.errormessage}}</div>
-    <div id="builder" ng-show="ctrl.model.fbeditor==false">
+    <style type="text/css">
+        .dark-mode .formio-dialog-content {
+            background-color: var(--dm-card-bg-color) !important;
+        }
+
+
+        .dark-mode .formio-dialog {
+            color: unset !important;
+        }
+
+        .dark-mode .table {
+            color: unset !important;
+        }
+
+        .dark-mode .ace_editor {
+            background-color: var(--dm-card-bg-color) !important;
+        }
+
+        .dark-mode .ace_gutter {
+            background-color: var(--dm-card-bg-color) !important;
+            color: unset !important;
+        }
+
+        .dark-mode .ace-xcode {
+            color: unset !important;
+        }
+
+        .dark-mode .choices__inner {
+            background-color: unset !important;
+        }
+
+        .dark-mode .choices__input {
+            background-color: unset !important;
+        }
+
+        .dark-mode .list-group-item {
+            background-color: unset !important;
+        }
+
+
+        /* .formio-dialog-content {
+            background: unset !important;
+        } */
+
+        /* .formbuilder {
+            min-width: 900px;
+        } */
+
+        /* .builder-sidebar {
+            width: 130px;
+        } */
+
+        .builder-group-button {
+            text-align: left !important;
+        }
+
+        .builder-sidebar_scroll {
+            position: sticky !important;
+            top: 15px !important;
+        }
+
+        .builder-sidebar {
+            width: 130px !important;
+        }
+
+        .form-builder-panel {
+            margin: unset !important;
+            padding: unset !important;
+        }
+
+        .form-builder-panel .formcomponent {
+            line-height: 2rem !important;
+            margin-top: 2px !important;
+            padding-left: 0.5rem !important;
+        }
+
+        .form-builder-panel .btn {
+            padding-left: 1rem !important;
+            padding-bottom: 2rem !important;
+        }
+
+        .dark-mode .bg-light {
+            background-color: #333 !important;
+        }
+
+
+        .nav {
+            display: -ms-flexbox !important;
+            display: flex !important;
+            -ms-flex-wrap: wrap !important;
+            flex-wrap: wrap !important;
+            padding-left: 0 !important;
+            margin-bottom: 0 !important;
+            list-style: none !important;
+        }
+
+        .nav-tabs {
+            border-bottom: 1px solid #dee2e6 !important;
+        }
+
+        .nav-tabs .nav-item {
+            margin-bottom: -1px !important;
+        }
+
+        .nav-tabs .nav-link {
+            border: 1px solid transparent !important;
+            border-top-left-radius: .25rem !important;
+            border-top-right-radius: .25rem !important;
+        }
+
+        .nav-tabs .nav-link:hover {
+            border-color: #e9ecef #e9ecef #dee2e6 !important;
+        }
+
+        .nav-tabs .nav-link.disabled {
+            color: #6c757d !important;
+            background-color: transparent !important;
+            border-color: transparent !important;
+        }
+
+        .nav-tabs .nav-item.show .nav-link,
+        .nav-tabs .nav-link.active {
+            color: #495057 !important;
+            background-color: #fff !important;
+            border-color: #dee2e6 #dee2e6 #fff !important;
+        }
+
+        .nav-tabs .dropdown-menu {
+            margin-top: -1px !important;
+            border-top-left-radius: 0 !important;
+            border-top-right-radius: 0 !important;
+        }
+
+        .tab-content>.tab-pane {
+            display: none !important;
+        }
+
+        .tab-content>.active {
+            display: block !important;
+        }
+    </style>
+
+    <div class="bootstrap-scope">
+        <div id="builder" ng-show="ctrl.model.fbeditor==false">
+        </div>
     </div>
-    
+
 </div>
