@@ -7578,6 +7578,8 @@ export class ConfigCtrl extends entityCtrl<RPAWorkflow> {
         
             {"name": "multi_tenant", "type": "boolean", "default": "false"},
             {"name": "enable_guest", "type": "boolean", "default": "false"},
+            {"name": "enable_guest_file_upload", "type": "boolean", "default": "false"},
+            
             {"name": "enable_gitserver", "type": "boolean", "default": "false"},
             {"name": "enable_gitserver_guest", "type": "boolean", "default": "false"},
             {"name": "enable_gitserver_guest_create", "type": "boolean", "default": "false"},
