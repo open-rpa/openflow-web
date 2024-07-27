@@ -9,8 +9,8 @@
     content="Passive Login page for OpenIAP core, used in robots or doing federated logins, learn more at https://github.com/open-rpa/openflow">
   <link rel="stylesheet" href="bundle.css">
   <title>Login</title>
-  <script src="bundle.js"></script>
-  <script src="angular-localization.min.js"></script>
+  <script src="/ui/bundle.js"></script>
+  <script src="/ui/angular-localization.min.js"></script>
 </head>
 
 <script>
@@ -248,7 +248,7 @@
           location.reload();
         })
     }
-    loadScript("formio.full.min.js", () => {
+    loadScript("/ui/formio.full.min.js", () => {
       this.stage = 0;
       if (window.location.href.indexOf("forgot") != -1)
       {
