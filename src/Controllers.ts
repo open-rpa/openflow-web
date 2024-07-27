@@ -5957,9 +5957,16 @@ export class CustomerCtrl extends entityCtrl<Customer> {
     }
     async IssueLicense(domain: string, months: string) {
         try {
+            let user = TokenUser.assign(WebSocketClient.instance.user);
             this.errormessage = "";
             this.loading = true;
-            if (domain == null || domain == "") return;
+            if (domain == null || domain == "") {
+                if (!user.HasRoleName("admins")) {
+                    this.errormessage = "Domain is required";
+                    console.log("Domain is required");
+                    return;
+                }
+            }
             const payload: any = { "email": this.model.email, domain };
             if(months != null && months != "") {
                 payload["months"] = months;
