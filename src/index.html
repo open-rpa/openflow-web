@@ -148,7 +148,7 @@
     <div class="sticky-alerts"></div>
 
     <nav class="navbar navbar-expand-md fixed-top" ng-show="menuctrl.signedin">
-      <button class="btn" type="button" ng-click="menuctrl.toggleSidebar()"><i class="fas fa-bars"
+      <button class="btn" style="margin-bottom: 0px !important;" type="button" ng-click="menuctrl.toggleSidebar()"><i class="fas fa-bars"
           aria-hidden="true"></i></button>
       <a href="#" class="navbar-brand">
         <span translate lib="web">sitename</span>
@@ -174,24 +174,24 @@
             {{menuctrl.customer.name}}</a>
         </div>
 
-        <button class=" btn btn-action mr-5" type="button" ng-click="menuctrl.toggleDarkMode()"
+        <button class="btn btn-action mr-5" style="margin-bottom: 0px !important;" type="button" ng-click="menuctrl.toggleDarkMode()"
           aria-label="Toggle dark mode" id="menudarkmode">
           <i class="fas fa-moon" aria-hidden="true"></i>
         </button>
-        <button id="menutour" class="btn btn-action mr-5" type="button" ng-click="menuctrl.ListTours()"
+        <button id="menutour" class="btn btn-action mr-5" style="margin-bottom: 0px !important;" type="button" ng-click="menuctrl.ListTours()"
           ng-show="menuctrl.WebSocketClientService.enable_web_tours" aria-label="Start tour">
           <i class="fas fa-question" aria-hidden="true"></i>
         </button>
 
 
-        <button class="btn btn-primary" type="submit" ng-click="menuctrl.stopimpersonation()"
+        <button class="btn btn-primary" style="margin-bottom: 0px !important;" type="submit" ng-click="menuctrl.stopimpersonation()"
           ng-show="menuctrl.user.impostor != undefined && menuctrl.user.impostor != null && menuctrl.user.impostor != ''">
           <em class="fas fa-user-secret" style="color: red;"></em></button>
 
-        <a href="/Signout" class="btn btn-primary" id="signoutbutton"><span translate lib="web">logout</span></a>
+        <a href="/Signout" class="btn btn-primary" style="margin-bottom: 0px !important;" id="signoutbutton"><span translate lib="web">logout</span></a>
         <div class="dropdown with-arrow" id="menuresellermenu"
           ng-show="menuctrl.WebSocketClientService.multi_tenant && menuctrl.customers != null && menuctrl.customers.length > 1">
-          <button class="btn" data-toggle="dropdown" type="button" id="navbar-dropdown-toggle-btn-1">
+          <button class="btn" style="margin-bottom: 0px !important;" data-toggle="dropdown" type="button" id="navbar-dropdown-toggle-btn-1">
             <span class="text-truncate">{{(menuctrl.customer.name || "No filter")  | limitTo: 25 }}</span>
             <i class="fas fa-angle-down" aria-hidden="true"></i>
           </button>
@@ -217,7 +217,7 @@
 
       <div class="navbar-content d-md-none ml-auto">
         <div class="dropdown with-arrow">
-          <button class="btn" data-toggle="dropdown" type="button" id="navbar-dropdown-toggle-btn-1">
+          <button class="btn" style="margin-bottom: 0px !important;" data-toggle="dropdown" type="button" id="navbar-dropdown-toggle-btn-1">
             Menu
             <i class="fas fa-angle-down" aria-hidden="true"></i>
           </button>
@@ -243,7 +243,7 @@
               <span translate lib="web">agents</span></a>
             <div class="dropdown-divider"></div>
             <div class="dropdown-content" id="signoutbutton2">
-              <a href="/Signout" class="btn btn-primary"><span translate lib="web">logout</span></a>
+              <a href="/Signout" class="btn btn-primary" style="margin-bottom: 0px !important;"><span translate lib="web">logout</span></a>
             </div>
           </div>
         </div>
