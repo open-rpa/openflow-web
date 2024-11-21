@@ -16,8 +16,8 @@ import showdown from "showdown";
 export type chatmessage = {
     role: "user" | "assistant" | "system" | "tool";
     content: string;
-  }
-  
+}
+
 declare let $: any;
 
 function treatAsUTC(date): number {
@@ -57,7 +57,7 @@ export class jsutil {
             link.onload = function () {
                 resolve();
             };
-            link.href = url;            
+            link.href = url;
             document.getElementsByTagName("head")[0].appendChild(link);
         });
     }
@@ -138,18 +138,18 @@ export class MenuCtrl {
     ) {
 
         document.addEventListener(
-        "click",
-        (event) => {
-            try {
-                if (!this.allowclick) {
-                    // event.cancelBubble = true;
-                    event.stopImmediatePropagation();
-                    return event.preventDefault();
+            "click",
+            (event) => {
+                try {
+                    if (!this.allowclick) {
+                        // event.cancelBubble = true;
+                        event.stopImmediatePropagation();
+                        return event.preventDefault();
+                    }
+                } catch (error) {
+                    console.error(error);
                 }
-            } catch (error) {
-                console.error(error);
-            }
-        });
+            });
         document.addEventListener("keydown", (event) => {
             if(!this.PathIs(this.searchpaths)) return;
             // Check if "Ctrl" or "Command" (for MacOS) is pressed along with "F"
@@ -158,7 +158,7 @@ export class MenuCtrl {
                 document.getElementById("menusearch").focus(); // Focus on your search field
             }
         });
-            
+
         this.halfmoon = require("halfmoon");
         console.debug("MenuCtrl::constructor");
         $scope.$root.$on("$routeChangeStart", (...args) => { this.routeChangeStart.apply(this, args); });
@@ -181,7 +181,7 @@ export class MenuCtrl {
                 this.majorversion = this.version.substring(0, this.version.lastIndexOf("."));
             }
             console.log(this.version)
-        
+
 
             this.customer = this.WebSocketClientService.customer;
 
@@ -446,8 +446,8 @@ export class MenuCtrl {
                 text: "Complete"
             };
             this.NewFeaturesTour.addStep({
-                title: "New User Interface in OpenIAP core",
-                text: `The new UI in OpenIAP core, allows for using darkmode, you can toogle darkmode on this button or you can use the keyboard shortcut Shift+D.`,
+                title: "New User Interface in OpenIAP Core",
+                text: `The new UI in OpenIAP Core allows for using darkmode, you can toggle darkmode on this button or use the keyboard shortcut Shift+D.`,
                 attachTo: {
                     element: "#menudarkmode"
                 },
@@ -456,8 +456,8 @@ export class MenuCtrl {
             });
 
             if (this.WebSocketClientService.multi_tenant && this.customer != null && this.customers.length == 0) this.NewFeaturesTour.addStep({
-                title: "Enable multi tenancy",
-                text: `Per default OpenIAP core is running in a single user mode, where users cannot share information. Click here to create a new Customer, and enable access to multiple user, roles, control access to data and workflows and to buy additional services`,
+                title: "Enable Multi Tenancy",
+                text: `Per default OpenIAP Core is running in a single user mode, where users cannot share information. Click here to create a new Customer, and enable access to multiple user, roles, control access to data and workflows and to buy additional services.`,
                 attachTo: {
                     element: "#menumultitenant"
                 },
@@ -466,8 +466,8 @@ export class MenuCtrl {
             });
             if (this.hasrole("customer admins") || this.hasrole("resellers") || this.hasrole("admins")) {
                 if (this.WebSocketClientService.multi_tenant && this.customer != null && this.customers.length == 1) this.NewFeaturesTour.addStep({
-                    title: "Manage your company",
-                    text: `Click here to manage you company details, this is also where you can check your next Invoice and how many services you have added`,
+                    title: "Manage Your Company",
+                    text: `Click here to manage your company details. You can also check your upcoming invoice, along with the amount and types of services you’ve added to your account.`,
                     attachTo: {
                         element: "#menumanagecustomer"
                     },
@@ -475,8 +475,8 @@ export class MenuCtrl {
                     id: "50"
                 });
                 if (this.WebSocketClientService.multi_tenant && this.customer != null && this.customers.length > 0) this.NewFeaturesTour.addStep({
-                    title: "Manage your users ",
-                    text: `Click here to manage your users. You can create, edit and delete new users, and you can purchase and assign new services to users here`,
+                    title: "Manage Your Users ",
+                    text: `You can create, edit, or delete users here. Additionally, this is where you can purchase and assign new services to them.`,
                     attachTo: {
                         element: "#menuadminusers"
                     },
@@ -493,8 +493,8 @@ export class MenuCtrl {
                 });
 
                 if (this.WebSocketClientService.multi_tenant && this.customer != null && this.customers.length > 1) this.NewFeaturesTour.addStep({
-                    title: "Select a company",
-                    text: `Click here to select a company to work with. This will filter the users and roles list, and control what customer to add new items too`,
+                    title: "Select a Company",
+                    text: `Click here to select a company to work with. This will filter the users and roles list, and control what customer to add new items too.`,
                     attachTo: {
                         element: "#menuresellermenu"
                     },
@@ -507,8 +507,8 @@ export class MenuCtrl {
                 const laststepid = parseInt(this.NewFeaturesTour.steps[this.NewFeaturesTour.steps.length - 1].id);
                 if (step <= laststepid) {
                     this.NewFeaturesTour.addStep({
-                        title: "Thank you for using OpenIAP",
-                        text: `We hope you will enjoy the power of the leading open Source Integrated Automation Platform, click here to see different help tours.`,
+                        title: "Thank You For Using OpenIAP",
+                        text: `We hope you will enjoy the capabilities of the leading Open-Source Integrated Automation Platform. Click on the ? icon on the top to explore various help tours available to you.`,
                         attachTo: {
                             element: "#menutour"
                         },
@@ -576,15 +576,15 @@ export class MenuCtrl {
             });
             if (this.WebSocketClientService.stripe_api_key == "pk_live_0XOJdv1fPLPnOnRn40CSdBsh009Ge1B2yI") {
                 tour.addStep({
-                    title: "What do you want to explorer ?",
-                    text: `Select from one of the below guided tours to learn more. Use your keyboard arror keys to move back and forward and Esc to exit the tour. <br><small><i>For billing questions and sales support feel free to reach out on support@openiap.io, for all other questions use the <a class="text-primary" href="https://discourse.openiap.io" target="_blank" rel="noopener">forum</a> or <a class="text-primary" href="https://rocket.openiap.io/" target="_blank" rel="noopener">rocket</a> chat</i></small>`,
+                    title: "What do you want to explore?",
+                    text: `Select from one of the below guided tours to learn more. Use your keyboard arrow keys to move back and forward and Esc to exit the tour. <br><small><i>For billing questions and sales support feel free to reach out on support@openiap.io, for all other questions use the <a class="text-primary" href="https://discourse.openiap.io" target="_blank" rel="noopener">forum</a> or <a class="text-primary" href="https://rocket.openiap.io/" target="_blank" rel="noopener">rocket</a> chat</i></small>.`,
                     buttons: bottons,
                     id: "tourlist"
                 });
             } else {
                 tour.addStep({
-                    title: "What do you want to explorer ?",
-                    text: `Select from one of the below guided tours to learn more. Use your keyboard arror keys to move back and forward and Esc to exit the tour.`,
+                    title: "What do you want to explore?",
+                    text: `Select from one of the below guided tours to learn more. Use your keyboard arrow keys to move back and forward and Esc to exit the tour.`,
                     buttons: bottons,
                     id: "tourlist"
                 });
@@ -655,8 +655,8 @@ export class MenuCtrl {
             };
 
             tour.addStep({
-                title: "User management",
-                text: `You manage users by clicking Users in the admin menu`,
+                title: "User Management",
+                text: `To manage users, simply click on “Users” in the admin menu.`,
                 beforeShowPromise: function () {
                     return new Promise((resolve) => setTimeout(resolve, 250));
                 },
@@ -678,8 +678,8 @@ export class MenuCtrl {
             });
 
             tour.addStep({
-                title: "User management",
-                text: `You assign new services to your users by clicking the <em class="fas fa-money-bill-wave"></em> icon. This require a valid vat number to have been added on the company page`,
+                title: "Assigning New Services",
+                text: `You can assign new services to your users by clicking the  <em class="fas fa-money-bill-wave"></em>  icon. Please note that a valid VAT number must be added on the company page to proceed.`,
                 beforeShowPromise: function () {
                     return new Promise((resolve) => setTimeout(resolve, 250));
                 },
@@ -693,8 +693,8 @@ export class MenuCtrl {
 
 
             tour.addStep({
-                title: "Roles management",
-                text: `You manage roles by clicking Roles in the admin menu. It is more efficent to use roles as a way to control access to resources and data. Many features will auto generate roles you can use to control access to these, like NodeRED workflows`,
+                title: "Managing Roles",
+                text: `To manage roles, click on “Roles” in the admin menu. Using roles is an efficient way to control access to resources and data. Many features will automatically generate roles that you can use to manage access, such as NodeRED workflows.`,
                 beforeShowPromise: function () {
                     return new Promise((resolve) => setTimeout(resolve, 250));
                 },
@@ -714,16 +714,16 @@ export class MenuCtrl {
             });
 
             tour.addStep({
-                title: "Roles management",
-                text: `Roles is also how we load balance workload across multiple robots. Simply check RPA on the edit role page to allow assigning workflows to that role. Any robot that is only and not busy, will then pick up that workitem `,
+                title: "Using Roles to Balance Workload",
+                text: `Roles also help us balance the workload across multiple robots. To allow assigning workflows to a role, simply check the “RPA” option on the edit role page. Any robot that is idle and not busy will then pick up the assigned work item.`,
                 attachTo: {
                 },
                 buttons: [backbutton, nextbutton],
                 id: "3"
             });
             tour.addStep({
-                title: "Audit logs",
-                text: `This is the log of security events related to you and users you manage, this combined with the built in version control and on-the-fly encryption, makes it easy to comply with various regulatory demands like GDRP, FedRAMP, HIPAA etc. By default only your own entries are shown`,
+                title: "Audit Log",
+                text: `This log contains security events related to you and the users you manage. Combined with the built-in version control and on-the-fly encryption, it simplifies compliance with various regulatory requirements such as GDPR, FedRAMP, HIPAA, etc. By default, only your own entries are displayed.`,
                 beforeShowPromise: function () {
                     return new Promise((resolve) => setTimeout(resolve, 250));
                 },
@@ -774,7 +774,7 @@ export class MenuCtrl {
 
             // if (this.WebSocketClientService.multi_tenant && this.customer != null && this.customers.length > 1) tour.addStep({
             //     title: "Enable multi tenancy",
-            //     text: `Per default OpenIAP core is running in a single user mode, where users cannot share information. Click here to create a new Customer, and enable access to multiple user, roles, control access to data and workflows and to buy additional services`,
+            //     text: `Per default OpenIAP Core is running in a single user mode, where users cannot share information. Click here to create a new Customer, and enable access to multiple user, roles, control access to data and workflows and to buy additional services`,
             //     attachTo: {
             //         element: "#menumultitenant"
             //     },
@@ -885,14 +885,14 @@ export class MenuCtrl {
 
             tour.addStep({
                 title: "Managing Data",
-                text: `OpenIAP core is primarily a database with an security layer, and an api to orchestrate multiple NodeRED and OpenRPA robots. Data is there for a central element of understanding and getting the ful benefit of the platform`,
+                text: `OpenIAP Core functions primarily as a database with a security layer and an API to orchestrate multiple NodeRED and OpenRPA robots. Data serves as a central element for understanding and maximizing the benefits of the platform.`,
                 buttons: [nextbutton],
                 id: "0"
             });
 
             tour.addStep({
-                title: "Managing Data",
-                text: `Most pages is a "view" on the data, but you can access ALL data inside the database, by clicking entities in the menu`,
+                title: "Accessing Data",
+                text: `Most pages provide a “view” of the data, but you can access all data within the database by clicking on “Entities” in the menu.`,
                 attachTo: {
                     element: "#menuentities",
                     on: "bottom"
@@ -912,8 +912,8 @@ export class MenuCtrl {
             });
 
             tour.addStep({
-                title: "Managing Data",
-                text: `The database contains a list of collections, similar to tables in an traditional relational database. We can store different kinds of data in the same collection, and there for group, and search our data in a more meaningful way`,
+                title: "Database Structure",
+                text: `The database contains a list of collections, similar to tables in a traditional relational database. We can store different types of data within the same collection, allowing us to group and search our data in a more meaningful way.`,
                 beforeShowPromise: function () {
                     return new Promise((resolve) => setTimeout(resolve, 250));
                 },
@@ -938,19 +938,19 @@ export class MenuCtrl {
 
 
             tour.addStep({
-                title: "Managing Data",
-                text: `I selected the "users" collection, and as you can see it contains both user and role objects.<br>
-                Clicking <em class="fas fa-notes-medical"></em> will open the history for that object, allowing you to see different versions of the object<br>
-                <em class="fas fa-edit"></em> to edit and set permissions, <em
-                class="fas fa-trash"></em> to delete the entity`,
+                title: "View Users Collection",
+                text: `We selected the “Users” collection for you, which contains both user and role objects. ${" "}<br>
+                Clicking <em class="fas fa-notes-medical"></em> will open the history for that object, allowing you to view different versions. Click <br>
+                <em class="fas fa-edit"></em> to access settings, and manage permissions, including deleting the entity by clicking <em
+                class="fas fa-trash"></em>.`,
                 buttons: [backbutton, nextbutton],
                 id: "3"
             });
 
 
             tour.addStep({
-                title: "Managing Data",
-                text: `Up here we have access to Undelete <em class="fas fa-undo"></em> to restore deleted object, <em class="fas fa-clone"></em> clone tool, that allows us to group all data by different keys and <em class="fas fa-plus"></em> to add a new entity to this collection`,
+                title: "Quick Access Tools",
+                text: `At the top, you have access to the Undelete <em class=“fas fa-undo”></em> option to restore deleted objects, the Clone Tool <em class=“fas fa-clone”></em> that allows you to group all data by different keys, and the option to add a new entity <em class=“fas fa-plus”></em> to this collection.`,
                 attachTo: {
                     element: "#entitiestools",
                     on: "bottom"
@@ -973,8 +973,8 @@ export class MenuCtrl {
 
 
             tour.addStep({
-                title: "Managing Data",
-                text: `When adding data, either from the webpage, a robot, NodeRED, PowerShell or the API, you need to comply with the entity restrictions setup for this OpenIAP core instance, you will get an Access Denied if you do not have the right create permissions.`,
+                title: "Data Permissions",
+                text: `When adding data — whether from the webpage, a robot, NodeRED, PowerShell, or the API — you must comply with the entity restrictions set for this OpenIAP Core instance. If you do not have the appropriate create permissions, you will receive an “Access Denied” message.`,
                 popperOptions: {
                     modifiers: [{ name: "offset", options: { offset: [50, 20] } }]
                 },
@@ -985,8 +985,8 @@ export class MenuCtrl {
 
 
             tour.addStep({
-                title: "Managing Data",
-                text: `Every entity in the database has an Access Control List that defines who can read, edit, delete or invoke this entity. Invoke will have different meanings for different types of entities`,
+                title: "Access Control Lists",
+                text: `Every entity in the database has an Access Control List (ACL) that defines who can read, edit, delete, or invoke that entity. The term “invoke” may have different meanings depending on the type of entity.`,
                 attachTo: {
                     element: "#entitypermissions",
                     on: "bottom"
@@ -999,8 +999,8 @@ export class MenuCtrl {
             });
 
             tour.addStep({
-                title: "Managing Data",
-                text: `Hear you can search for, and then add any user or role. You define what right you want to assign them. As a rule of thumb use roles, and not users unless absolutely necessary. Even with a low number of users it is often much more effecient to use roles to control permissions, than having to go back and update the permissions on all objects later to add/remove a user.`,
+                title: "Managing Users and Roles",
+                text: `Here, you can search for and add any user or role. You define the rights you want to assign to them. As a general rule, use roles instead of individual users unless absolutely necessary. Even with a small number of users, it is often more efficient to manage permissions through roles rather than having to update permissions for each object later when adding or removing a user.`,
                 attachTo: {
                     element: "#addusergroup",
                     on: "bottom"
@@ -1012,8 +1012,8 @@ export class MenuCtrl {
                 id: "7"
             });
             tour.addStep({
-                title: "Managing Data",
-                text: `By default you get an structured view that allows adding or removing properties, but you are free to click the "show json" button to edit the object directly`,
+                title: "Editing Object Properties",
+                text: `By default, you will see a structured view that allows you to add or remove properties. However, you can also click the “Show JSON” button to edit the object directly.`,
                 attachTo: {
                     element: "#enableshowjson",
                     on: "bottom"
@@ -1087,8 +1087,7 @@ export class MenuCtrl {
 
             tour.addStep({
                 title: "Managing Robots",
-                text: `Robots run as a User. Normaly you will run a robot as your own user, but once you start to scale it makes sense to create dedicated bot accounts. 
-                Keep in mind you cannot run multiply robots with the same user account, so create meaning full names when adding new users`,
+                text: `Robots in OpenIAP Core run as a user. Typically, you will run a robot using your own user account, but as you scale, it makes sense to create dedicated robot accounts. Keep in mind that you cannot run multiple robots with the same user account, so be mindful to use meaningful names when adding new users.`,
                 beforeShowPromise: function () {
                     return new Promise((resolve) => setTimeout(resolve, 250));
                 },
@@ -1112,8 +1111,8 @@ export class MenuCtrl {
             });
 
             tour.addStep({
-                title: "Managing Robots",
-                text: `When scaling to many robots, you will need to spread out the workload to many robots. You can create a role, and add all the robot user accounts to that role.`,
+                title: "Distributing Workload Among Robots",
+                text: `As you scale and manage multiple robots, it’s important to distribute the workload effectively. You can create a role and add all the robot user accounts to that role.`,
                 beforeShowPromise: function () {
                     return new Promise((resolve) => setTimeout(resolve, 250));
                 },
@@ -1141,8 +1140,8 @@ export class MenuCtrl {
 
 
             tour.addStep({
-                title: "Managing Robots",
-                text: `On the new role make sure to check the RPA role. This tell the robots that is member of this role, to wait for work sent to this role. When you send work to a role, any robot that is online and is not busy with other workflows will take the job. If no robots pick up the message it will be queue up and retry automatically`,
+                title: "Set Up RPA Roles",
+                text: `When creating a new role, be sure to check the “RPA Role”. This indicates that the robots assigned to this role should wait for work to be sent to it. When you send tasks to a role, any online robot that is not busy with other workflows will take the job. If no robots pick up the task, it will be queued and retried automatically.`,
                 beforeShowPromise: function () {
                     return new Promise((resolve) => setTimeout(resolve, 250));
                 },
@@ -1165,8 +1164,8 @@ export class MenuCtrl {
 
 
             tour.addStep({
-                title: "Credentials",
-                text: `For a more secure environment, it is a good practice to use encrypted credentials added here and not save those as plaintext in a robot workflow. Remember to give all robots access to the credentials.`,
+                title: "Using Encrypted Credentials",
+                text: `For a more secure environment, it is best practice to use encrypted credentials added here instead of saving them as plaintext in a robot workflow. Remember to grant all robots access to these credentials.`,
                 beforeShowPromise: function () {
                     return new Promise((resolve) => setTimeout(resolve, 250));
                 },
@@ -1192,8 +1191,8 @@ export class MenuCtrl {
 
 
             tour.addStep({
-                title: "Clients",
-                text: `On the clients page you can see all online users, and filter on the type of client used.`,
+                title: "Clients Page Overview",
+                text: `On the Clients page, you can view all online users and filter by the type of client being used.`,
                 beforeShowPromise: function () {
                     return new Promise((resolve) => setTimeout(resolve, 250));
                 },
@@ -1220,8 +1219,8 @@ export class MenuCtrl {
 
             tour.addStep({
                 title: "RPA Workflows",
-                text: `On the rpa workflows page, you can see a list of all the RPA workflows you have access too, if you click invoke <em
-                class="fas fa-play-circle"></em>, you can even start them from this webpage, given the robot is online`,
+                text: `On the RPA Workflows page, you can view a list of all the RPA workflows you have access to. By clicking invoke <em
+                class="fas fa-play-circle"></em>, you can start them directly from this webpage, provided the robot is online.`,
                 beforeShowPromise: function () {
                     return new Promise((resolve) => setTimeout(resolve, 250));
                 },
@@ -1248,11 +1247,11 @@ export class MenuCtrl {
 
             var nodered_multi_tenant_turns_off = "";
             if (this.WebSocketClientService.multi_tenant) {
-                nodered_multi_tenant_turns_off = "The free version will stop after a few hours hours and have limited amount of ram. ";
+                nodered_multi_tenant_turns_off = "The free version will stop after a few hours and has a limited amount of RAM.";
             }
             tour.addStep({
-                title: "Nodered",
-                text: `On the NodeRED page, you can start your personal NodeRED instance. ` + nodered_multi_tenant_turns_off + `This is where you can schedule robots, and install modules that allows easy integration to more than 3500 IT systems. This is also where you create workflow, that can involve humans using different channels like email, chat, voice or the forms you design in OpenIAP core`,
+                title: "NodeRED Overview",
+                text: `On the NodeRED page, you can start your personal NodeRED instance. ` + nodered_multi_tenant_turns_off + ` Here, you can schedule robots and install modules for easy integration with over 3,500 IT systems. You can also create workflows that involve human interaction (Humans In The Loop) through various channels, such as email, chat, voice, or the forms you design in OpenIAP Core.`,
                 beforeShowPromise: function () {
                     return new Promise((resolve) => setTimeout(resolve, 250));
                 },
@@ -1278,8 +1277,8 @@ export class MenuCtrl {
 
 
             tour.addStep({
-                title: "Forms",
-                text: `This is where you can create forms, used by workflows in NodeRED. You can combine this with other channels as well, and then automated based on the input you get and/or present the results`,
+                title: "Creating Forms",
+                text: `This is where you can create forms that are used in workflows within NodeRED. You can combine these forms with other channels and automate processes based on the input you receive, as well as present the results.`,
                 beforeShowPromise: function () {
                     return new Promise((resolve) => setTimeout(resolve, 250));
                 },
@@ -1305,8 +1304,8 @@ export class MenuCtrl {
 
 
             tour.addStep({
-                title: "Workflows",
-                text: `Once you created a Workflow in NodeRED, this is where you and your users can start the workflow. Each workflow will have a corrosponding role created, that you need to add the users too, in order to see and invoke the workflow. You can "chain" many workflows, so triggering one workflow will create one or more sub workflows and wait for the results. This is handy when working with complex swim lanes or process that span multiple departments.`,
+                title: "Starting Workflows in NodeRED",
+                text: `Once you create a workflow in NodeRED, this is where you and your users can initiate it. Each workflow will have a corresponding role that you need to assign users to in order for them to see and invoke the workflow. You can also “chain” multiple workflows, meaning that triggering one workflow can create one or more sub-workflows and wait for the results. This feature is particularly useful when managing complex swim lanes or processes that span multiple departments.`,
                 beforeShowPromise: function () {
                     return new Promise((resolve) => setTimeout(resolve, 250));
                 },
@@ -1326,7 +1325,7 @@ export class MenuCtrl {
                 popperOptions: {
                     modifiers: [{ name: "offset", options: { offset: [0, 15] } }]
                 },
-                buttons: [backbutton, nextbutton],
+                buttons: [backbutton, completebutton],
                 id: "7"
             });
             // tour.addStep({
@@ -1447,36 +1446,36 @@ export class RPAWorkflowCtrl extends entityCtrl<RPAWorkflow> {
             if (this.arguments === null || this.arguments === undefined) { this.arguments = {}; }
 
             var keys = Object.keys(this.arguments);
-            for(let i = 0; i < keys.length; i++) {
+            for (let i = 0; i < keys.length; i++) {
                 const key = keys[i];
-                const param = this.model.Parameters.find(x=> x.name == key);
-                if(param && param.type == "System.String") this.arguments[key] = this.arguments[key] ?? "";
-                if(param && param.type == "System.Int32") this.arguments[key] = parseInt(this.arguments[key]);
-                if(param && param.type == "System.Boolean") this.arguments[key] = this.parseBoolean(this.arguments[key]);
-                if(param && param.type == "System.DateTime") {
-                    if(this.arguments[key] != null && this.arguments[key] != "") {
+                const param = this.model.Parameters.find(x => x.name == key);
+                if (param && param.type == "System.String") this.arguments[key] = this.arguments[key] ?? "";
+                if (param && param.type == "System.Int32") this.arguments[key] = parseInt(this.arguments[key]);
+                if (param && param.type == "System.Boolean") this.arguments[key] = this.parseBoolean(this.arguments[key]);
+                if (param && param.type == "System.DateTime") {
+                    if (this.arguments[key] != null && this.arguments[key] != "") {
                         this.arguments[key] = new Date(this.arguments[key]).toISOString();
                     } else {
                         this.arguments[key] = undefined;
                     }
                 }
-                if(param && param.type == "System.String[]" && Array.isArray(this.arguments[key]) == false ) {
+                if (param && param.type == "System.String[]" && Array.isArray(this.arguments[key]) == false) {
                     var arr = this.arguments[key].split(",");
                     this.arguments[key] = arr;
                 }
-                if(param && param.type == "System.Int32[]" && Array.isArray(this.arguments[key]) == false ) {
+                if (param && param.type == "System.Int32[]" && Array.isArray(this.arguments[key]) == false) {
                     var arr = this.arguments[key].split(",");
-                    arr = arr.map(x=> parseInt(x));
+                    arr = arr.map(x => parseInt(x));
                     this.arguments[key] = arr;
                 }
-                if(param && param.type == "System.Boolean[]" && Array.isArray(this.arguments[key]) == false ) {
+                if (param && param.type == "System.Boolean[]" && Array.isArray(this.arguments[key]) == false) {
                     var arr = this.arguments[key].split(",");
-                    arr = arr.map(x=> this.parseBoolean(x));
+                    arr = arr.map(x => this.parseBoolean(x));
                     this.arguments[key] = arr;
                 }
-                if(param && param.type == "System.DateTime[]" && Array.isArray(this.arguments[key]) == false ) {
+                if (param && param.type == "System.DateTime[]" && Array.isArray(this.arguments[key]) == false) {
                     var arr = this.arguments[key].split(",");
-                    arr = arr.map(x=> new Date(x).toISOString());
+                    arr = arr.map(x => new Date(x).toISOString());
                     this.arguments[key] = arr;
                 }
                 console.log(key, this.arguments[key])
@@ -1485,22 +1484,22 @@ export class RPAWorkflowCtrl extends entityCtrl<RPAWorkflow> {
             const rpacommand = {
                 command: "invoke",
                 workflowid: this.model._id,
-                data: {...this.arguments}
+                data: { ...this.arguments }
             }
-            for(let i = 0; i < keys.length; i++) {
+            for (let i = 0; i < keys.length; i++) {
                 const key = keys[i];
-                const param = this.model.Parameters.find(x=> x.name == key);
+                const param = this.model.Parameters.find(x => x.name == key);
                 // console.log(key, this.arguments[key])
-                if(param && param.type == "System.String[]" && Array.isArray(this.arguments[key]) == true ) {
+                if (param && param.type == "System.String[]" && Array.isArray(this.arguments[key]) == true) {
                     this.arguments[key] = this.arguments[key].join(",");
                 }
-                if(param && param.type == "System.Int32[]" && Array.isArray(this.arguments[key]) == true ) {
+                if (param && param.type == "System.Int32[]" && Array.isArray(this.arguments[key]) == true) {
                     this.arguments[key] = this.arguments[key].join(",");
                 }
-                if(param && param.type == "System.Boolean[]" && Array.isArray(this.arguments[key]) == true ) {
+                if (param && param.type == "System.Boolean[]" && Array.isArray(this.arguments[key]) == true) {
                     this.arguments[key] = this.arguments[key].join(",");
                 }
-                if(param && param.type == "System.DateTime[]" && Array.isArray(this.arguments[key]) == true ) {
+                if (param && param.type == "System.DateTime[]" && Array.isArray(this.arguments[key]) == true) {
                     this.arguments[key] = this.arguments[key].join(",");
                 }
                 console.log(key, this.arguments[key])
@@ -3111,7 +3110,7 @@ export class EntitiesCtrl extends entitiesCtrl<Base> {
         if(this.collection?.endsWith(".files")) {
             this.searchfields = ["filename", "metadata.name"];
         }
-        this.baseprojection = { _type: 1, type: 1, name: 1, _created: 1, _createdby: 1, _modified: 1, 
+        this.baseprojection = { _type: 1, type: 1, name: 1, _created: 1, _createdby: 1, _modified: 1,
             "metadata.name": 1, "metadata._type": 1, "metadata._created": 1, "metadata._createdby": 1, "metadata._modified": 1 };
         this.postloadData = this.processdata;
         if (this.userdata.data.EntitiesCtrl) {
@@ -4628,11 +4627,11 @@ export class ClientsCtrl  {
         this.userdata.data.ClientsCtrl.show = this.show;
 
         if(this.searchstring != "") {
-            this.models = this.models.filter(x => 
+            this.models = this.models.filter(x =>
                 x.name.toLowerCase().indexOf(this.searchstring.toLowerCase()) > -1
                 || x.username.toLowerCase().indexOf(this.searchstring.toLowerCase()) > -1
                 || x.user?.email?.toLowerCase().indexOf(this.searchstring.toLowerCase()) > -1
-                );
+            );
         }
 
 
@@ -4749,7 +4748,7 @@ export class AuditlogsCtrl extends entitiesCtrl<Role> {
         } else {
             this.basequery["type"] = logtype;
         }
-        this.page = 0; 
+        this.page = 0;
         this.loading = false;
         this.loadData()
     }
@@ -5239,7 +5238,7 @@ export class DuplicatesCtrl extends entitiesCtrl<Base> {
                         if (!subkeys[n].startsWith("_") && subkeys[n] != "_type" && subkeys[n] != "$$hashKey") {
                             this.keys.push("metadata." + subkeys[n])
                         }
-                    }                    
+                    }
                 } else if (this.keys[i].startsWith("_") && this.keys[i] != "_type" ) {
                     this.keys.splice(i, 1);
                 } else if (this.keys[i] == "$$hashKey") {
@@ -5723,7 +5722,7 @@ export class CustomerCtrl extends entityCtrl<Customer> {
                 res.products = res.products.filter(x => x.allowdirectassign == true);
                 for (var prod of res.products) {
                     (prod as any).count = this.AssignCount(prod);
-                    
+
                     if ((prod as any).count > 0) {
                         (res as any).newproduct = prod;
                         (prod as any).usedby = this.UsedbyCount(prod);
@@ -5762,7 +5761,7 @@ export class CustomerCtrl extends entityCtrl<Customer> {
                     this.licenses.push(a);
                 }
             }
-            
+
         } catch (error) {
             this.errormessage = error;
         }
@@ -6451,7 +6450,7 @@ export class ResourcesCtrl extends entitiesCtrl<Resource> {
                         this.newProduct("Basic Support", "prod_HEGjSQ9M6wiYiP", "plan_HEGjLCtwsVbIx8", "single", "single", supporthours._id, "plan_HEZAsA1DfkiQ6k", 1, {}, true, 0),
                     ], true, true, 0);
 
-                const premium: Resource = await this.newResource("OpenIAP core License", "customer", "singlevariant", "singlevariant", {},
+                const premium: Resource = await this.newResource("OpenIAP Core License", "customer", "singlevariant", "singlevariant", {},
                     [
                         this.newProduct("Premium License", "prod_JcXS2AvXfwk1Lv", "price_1IzISoC2vUMc6gvhMtqTq2Ef", "multiple", "multiple", supporthours._id, "plan_HEZp4Q4In2XcXe", 1, {}, true, 0),
                     ], true, true, 2);
@@ -6489,7 +6488,7 @@ export class ResourcesCtrl extends entitiesCtrl<Resource> {
                         this.newProduct("Basic Support", "prod_HG1vTqU4c7EaV5", "plan_HG1vb53VlOu46y", "single", "single", supporthours._id, "plan_HG1wBF6yq1O15C", 1, {}, true, 0),
                     ], true, true, 0);
 
-                const premium: Resource = await this.newResource("OpenIAP core License", "customer", "singlevariant", "singlevariant", {},
+                const premium: Resource = await this.newResource("OpenIAP Core License", "customer", "singlevariant", "singlevariant", {},
                     [
                         this.newProduct("Premium License", "prod_JcXS2AvXfwk1Lv", "price_1J2KcMC2vUMc6gvhmmsAGo35", "multiple", "multiple", supporthours._id, "plan_HFkbfsAs1Yvcly", 1, {}, true, 0),
                         this.newProduct("Premium License Legacy", "prod_HFkZ8lKn7GtFQU", "plan_HFka1sgovtAQ7k", "single", "single", supporthours._id, "plan_HFkbfsAs1Yvcly", 1, {}, false, 1),
@@ -7016,7 +7015,7 @@ export class WorkitemQueueCtrl extends entityCtrl<WorkitemQueue> {
         this.agents.unshift({ "name": "" } as any)
         this.packages = await NoderedUtil.Query({ collectionname: "agents", query: { "_type": "package" }, orderby: "name", projection: { "name": 1 } });
         this.packages.unshift({ "name": "" } as any)
-    
+
         if (!this.$scope.$$phase) { this.$scope.$apply(); }
     }
     async processdata() {
@@ -7484,219 +7483,219 @@ export class ConfigCtrl extends entityCtrl<RPAWorkflow> {
             // {"name": "aes_secret", "type": "string", "default": ""}, // ONLY envoriment variable
             // {"name": "signing_crt", "type": "string", "default": ""}, // ONLY envoriment variable
             // {"name": "singing_key", "type": "string", "default": ""}, // ONLY envoriment variable
-            {"name": "license_key", "type": "string", "default": ""},
-            {"name": "enable_openapi", "type": "boolean", "default": "true"},
-            {"name": "enable_grafanaapi", "type": "boolean", "default": "true"},
-            {"name": "llmchat_queue", "type": "string", "default": ""},
-            {"name": "log_with_colors", "type": "boolean", "default": "true"},
-            {"name": "log_database_queries_to_collection", "type": "string", "default": ""},
-            {"name": "cache_store_type", "type": "string", "default": "memory"},
-            {"name": "cache_store_max", "type": "number", "default": "1000"},
-            {"name": "cache_store_ttl_seconds", "type": "number", "default": "300"},
-            {"name": "cache_store_redis_host", "type": "string", "default": ""},
-            {"name": "cache_store_redis_port", "type": "number", "default": "6379"},
-            {"name": "cache_store_redis_password", "type": "string", "default": ""},
-            {"name": "cache_workitem_queues", "type": "boolean", "default": "false"},
-            {"name": "heapdump_onstop", "type": "boolean", "default": "false"},
-            {"name": "amqp_allow_replyto_empty_queuename", "type": "boolean", "default": "false"},
-            {"name": "enable_openflow_amqp", "type": "boolean", "default": "false"},
-            {"name": "openflow_amqp_expiration", "type": "number", "default": "1500000"}, 
-            {"name": "amqp_prefetch", "type": "number", "default": "25"},
-            {"name": "enable_entity_restriction", "type": "boolean", "default": "false"},
-            {"name": "enable_web_tours", "type": "boolean", "default": "true"},
-            {"name": "enable_nodered_tours", "type": "boolean", "default": "true"},
-            {"name": "grafana_url", "type": "string", "default": ""},
-            {"name": "auto_hourly_housekeeping", "type": "boolean", "default": "true"},
-            {"name": "housekeeping_skip_calculate_size", "type": "boolean", "default": "false"},
-            {"name": "housekeeping_skip_update_user_size", "type": "boolean", "default": "false"},    
-            {"name": "housekeeping_skip_collections", "type": "string", "default": ""},
-            {"name": "housekeeping_remove_unvalidated_user_days", "type": "number", "default": "0"},
-            {"name": "housekeeping_cleanup_openrpa_instances", "type": "boolean", "default": "false"},
-            {"name": "workitem_queue_monitoring_enabled", "type": "boolean", "default": "true"},
-            {"name": "workitem_queue_monitoring_interval", "type": "number", "default": "10000"},
-            {"name": "upload_max_filesize_mb", "type": "number", "default": "25"},
-            {"name": "getting_started_url", "type": "string", "default": ""},
-            {"name": "HTTP_PROXY", "type": "string", "default": ""},
-            {"name": "HTTPS_PROXY", "type": "string", "default": ""},
-            {"name": "NO_PROXY", "type": "string", "default": ""},
-            {"name": "agent_HTTP_PROXY", "type": "string", "default": ""},
-            {"name": "agent_HTTPS_PROXY", "type": "string", "default": ""},
-            {"name": "agent_NO_PROXY", "type": "string", "default": ""},
-            {"name": "agent_NPM_REGISTRY", "type": "string", "default": ""},
-            {"name": "agent_NPM_TOKEN", "type": "string", "default": ""},            
-            {"name": "stripe_api_key", "type": "string", "default": ""},
-            {"name": "stripe_api_secret", "type": "string", "default": ""},
-            {"name": "stripe_force_vat", "type": "boolean", "default": "false"},
-            {"name": "stripe_force_checkout", "type": "boolean", "default": "false"},
-            {"name": "stripe_allow_promotion_codes", "type": "boolean", "default": "true"},
-            {"name": "ensure_indexes", "type": "boolean", "default": "true"},
-            {"name": "text_index_name_fields", "type": "string[]", "default": "name,_names"},
-            {"name": "auto_create_users", "type": "boolean", "default": "false"},
-            {"name": "auto_create_user_from_jwt", "type": "boolean", "default": "false"},
-            {"name": "auto_create_domains", "type": "string[]", "default": ""},
-            {"name": "persist_user_impersonation", "type": "boolean", "default": "false"},
-            {"name": "ping_clients_interval", "type": "number", "default": "10000"}, // 10 seconds
-            {"name": "use_ingress_beta1_syntax", "type": "boolean", "default": "false"},
-            {"name": "use_openshift_routes", "type": "boolean", "default": "false"},
-            {"name": "agent_image_pull_secrets", "type": "string[]", "default": "[]"},
-            {"name": "auto_create_personal_nodered_group", "type": "boolean", "default": "false"},
-            {"name": "auto_create_personal_noderedapi_group", "type": "boolean", "default": "false"},
-            {"name": "force_add_admins", "type": "boolean", "default": "true"},
-            {"name": "validate_emails", "type": "boolean", "default": "false"},
-            {"name": "forgot_pass_emails", "type": "boolean", "default": "false"},
-            {"name": "smtp_service", "type": "string", "default": ""},
-            {"name": "smtp_from", "type": "string", "default": ""},
-            {"name": "smtp_user", "type": "string", "default": ""},
-            {"name": "smtp_pass", "type": "string", "default": ""},
-            {"name": "smtp_url", "type": "string", "default": ""},
-            {"name": "debounce_lookup", "type": "boolean", "default": "false"},
-            {"name": "validate_emails_disposable", "type": "boolean", "default": "false"},
-            {"name": "tls_crt", "type": "string", "default": ""},
-            {"name": "tls_key", "type": "string", "default": ""},
-            {"name": "tls_ca", "type": "string", "default": ""},
-            {"name": "tls_passphrase", "type": "string", "default": ""},
-        
-            {"name": "oidc_access_token_ttl", "type": "number", "default": "480"},
-            {"name": "oidc_authorization_code_ttl", "type": "number", "default": "480"},
-            {"name": "oidc_client_credentials_ttl", "type": "number", "default": "480"},
-            {"name": "oidc_refresh_token_ttl", "type": "number", "default": "20160"},
-            {"name": "oidc_session_ttl", "type": "number", "default": "20160"},
-        
-            {"name": "oidc_cookie_key", "type": "string", "default": ""},
-            {"name": "api_rate_limit", "type": "boolean", "default": "true"},
-            {"name": "api_rate_limit_points", "type": "number", "default": "20"},
-            {"name": "api_rate_limit_duration", "type": "number", "default": "1"},
-            {"name": "socket_rate_limit", "type": "boolean", "default": "true"},
-            {"name": "socket_rate_limit_points", "type": "number", "default": "30"},
-            {"name": "socket_rate_limit_points_disconnect", "type": "number", "default": "100"},
-            {"name": "socket_rate_limit_duration", "type": "number", "default": "1"},
-            {"name": "socket_error_rate_limit_points", "type": "number", "default": "30"},
-            {"name": "socket_error_rate_limit_duration", "type": "number", "default": "1"},
-        
-            {"name": "client_heartbeat_timeout", "type": "number", "default": "60"},
-            {"name": "client_signin_timeout", "type": "number", "default": "120"},
-            {"name": "client_disconnect_signin_error", "type": "boolean", "default": "false"},
-        
-            {"name": "expected_max_roles", "type": "number", "default": "20000"},
-            {"name": "decorate_roles_fetching_all_roles", "type": "boolean", "default": "true"},
-            {"name": "max_recursive_group_depth", "type": "number", "default": "2"},
-            {"name": "update_acl_based_on_groups", "type": "boolean", "default": "true"},
-            {"name": "allow_merge_acl", "type": "boolean", "default": "false"},
-        
-            {"name": "multi_tenant", "type": "boolean", "default": "false"},
-            {"name": "enable_guest", "type": "boolean", "default": "false"},
-            {"name": "enable_guest_file_upload", "type": "boolean", "default": "false"},
-            
-            {"name": "enable_gitserver", "type": "boolean", "default": "false"},
-            {"name": "enable_gitserver_guest", "type": "boolean", "default": "false"},
-            {"name": "enable_gitserver_guest_create", "type": "boolean", "default": "false"},
-            
-        
-            {"name": "cleanup_on_delete_customer", "type": "boolean", "default": "false"},
-            {"name": "cleanup_on_delete_user", "type": "boolean", "default": "false"},
-            {"name": "api_bypass_perm_check", "type": "boolean", "default": "false"},
-            {"name": "allow_signin_with_expired_jwt", "type": "boolean", "default": "false"},
-            {"name": "force_audit_ts", "type": "boolean", "default": "false"},
-            {"name": "force_dbusage_ts", "type": "boolean", "default": "false"},
-            {"name": "migrate_audit_to_ts", "type": "boolean", "default": "true"},
-            {"name": "websocket_package_size", "type": "number", "default": "25000"},
-            {"name": "websocket_max_package_count", "type": "number", "default": "1048576"},
-            {"name": "websocket_message_callback_timeout", "type": "number", "default": "3600"},
-            {"name": "websocket_disconnect_out_of_sync", "type": "boolean", "default": "false"},
-            {"name": "protocol", "type": "string", "default": "http"},
-            {"name": "port", "type": "number", "default": "3000"},
-            {"name": "cookie_secret", "type": "string", "default": "NLgUIsozJaxO38ze0WuHthfj2eb1eIEu"},
-            {"name": "max_ace_count", "type": "number", "default": "128"},
-        
-            {"name": "amqp_reply_expiration", "type": "number", "default": "60000"},
-            {"name": "amqp_force_queue_prefix", "type": "boolean", "default": "false"},
-            {"name": "amqp_force_exchange_prefix", "type": "boolean", "default": "false"},
-            {"name": "amqp_force_sender_has_read", "type": "boolean", "default": "true"},
-            {"name": "amqp_force_sender_has_invoke", "type": "boolean", "default": "false"},
-            {"name": "amqp_force_consumer_has_update", "type": "boolean", "default": "false"},
-            {"name": "amqp_enabled_exchange", "type": "boolean", "default": "false"},
-            {"name": "amqp_url", "type": "string", "default": "amqp://localhost"},
-            {"name": "amqp_username", "type": "string", "default": "guest"},
-            {"name": "amqp_password", "type": "string", "default": "guest"},
-        
-            {"name": "amqp_check_for_consumer", "type": "boolean", "default": "true"},
-            {"name": "amqp_check_for_consumer_count", "type": "boolean", "default": "false"},
-            {"name": "amqp_default_expiration", "type": "number", "default": "60000"},
-            {"name": "amqp_requeue_time", "type": "number", "default": "1000"},
-            {"name": "amqp_dlx", "type": "string", "default": "openflow-dlx"},
-        
-            {"name": "mongodb_minpoolsize", "type": "number", "default": "25"},
-            {"name": "mongodb_maxpoolsize", "type": "number", "default": "25"},
+            { "name": "license_key", "type": "string", "default": "" },
+            { "name": "enable_openapi", "type": "boolean", "default": "true" },
+            { "name": "enable_grafanaapi", "type": "boolean", "default": "true" },
+            { "name": "llmchat_queue", "type": "string", "default": "" },
+            { "name": "log_with_colors", "type": "boolean", "default": "true" },
+            { "name": "log_database_queries_to_collection", "type": "string", "default": "" },
+            { "name": "cache_store_type", "type": "string", "default": "memory" },
+            { "name": "cache_store_max", "type": "number", "default": "1000" },
+            { "name": "cache_store_ttl_seconds", "type": "number", "default": "300" },
+            { "name": "cache_store_redis_host", "type": "string", "default": "" },
+            { "name": "cache_store_redis_port", "type": "number", "default": "6379" },
+            { "name": "cache_store_redis_password", "type": "string", "default": "" },
+            { "name": "cache_workitem_queues", "type": "boolean", "default": "false" },
+            { "name": "heapdump_onstop", "type": "boolean", "default": "false" },
+            { "name": "amqp_allow_replyto_empty_queuename", "type": "boolean", "default": "false" },
+            { "name": "enable_openflow_amqp", "type": "boolean", "default": "false" },
+            { "name": "openflow_amqp_expiration", "type": "number", "default": "1500000" },
+            { "name": "amqp_prefetch", "type": "number", "default": "25" },
+            { "name": "enable_entity_restriction", "type": "boolean", "default": "false" },
+            { "name": "enable_web_tours", "type": "boolean", "default": "true" },
+            { "name": "enable_nodered_tours", "type": "boolean", "default": "true" },
+            { "name": "grafana_url", "type": "string", "default": "" },
+            { "name": "auto_hourly_housekeeping", "type": "boolean", "default": "true" },
+            { "name": "housekeeping_skip_calculate_size", "type": "boolean", "default": "false" },
+            { "name": "housekeeping_skip_update_user_size", "type": "boolean", "default": "false" },
+            { "name": "housekeeping_skip_collections", "type": "string", "default": "" },
+            { "name": "housekeeping_remove_unvalidated_user_days", "type": "number", "default": "0" },
+            { "name": "housekeeping_cleanup_openrpa_instances", "type": "boolean", "default": "false" },
+            { "name": "workitem_queue_monitoring_enabled", "type": "boolean", "default": "true" },
+            { "name": "workitem_queue_monitoring_interval", "type": "number", "default": "10000" },
+            { "name": "upload_max_filesize_mb", "type": "number", "default": "25" },
+            { "name": "getting_started_url", "type": "string", "default": "" },
+            { "name": "HTTP_PROXY", "type": "string", "default": "" },
+            { "name": "HTTPS_PROXY", "type": "string", "default": "" },
+            { "name": "NO_PROXY", "type": "string", "default": "" },
+            { "name": "agent_HTTP_PROXY", "type": "string", "default": "" },
+            { "name": "agent_HTTPS_PROXY", "type": "string", "default": "" },
+            { "name": "agent_NO_PROXY", "type": "string", "default": "" },
+            { "name": "agent_NPM_REGISTRY", "type": "string", "default": "" },
+            { "name": "agent_NPM_TOKEN", "type": "string", "default": "" },
+            { "name": "stripe_api_key", "type": "string", "default": "" },
+            { "name": "stripe_api_secret", "type": "string", "default": "" },
+            { "name": "stripe_force_vat", "type": "boolean", "default": "false" },
+            { "name": "stripe_force_checkout", "type": "boolean", "default": "false" },
+            { "name": "stripe_allow_promotion_codes", "type": "boolean", "default": "true" },
+            { "name": "ensure_indexes", "type": "boolean", "default": "true" },
+            { "name": "text_index_name_fields", "type": "string[]", "default": "name,_names" },
+            { "name": "auto_create_users", "type": "boolean", "default": "false" },
+            { "name": "auto_create_user_from_jwt", "type": "boolean", "default": "false" },
+            { "name": "auto_create_domains", "type": "string[]", "default": "" },
+            { "name": "persist_user_impersonation", "type": "boolean", "default": "false" },
+            { "name": "ping_clients_interval", "type": "number", "default": "10000" }, // 10 seconds
+            { "name": "use_ingress_beta1_syntax", "type": "boolean", "default": "false" },
+            { "name": "use_openshift_routes", "type": "boolean", "default": "false" },
+            { "name": "agent_image_pull_secrets", "type": "string[]", "default": "[]" },
+            { "name": "auto_create_personal_nodered_group", "type": "boolean", "default": "false" },
+            { "name": "auto_create_personal_noderedapi_group", "type": "boolean", "default": "false" },
+            { "name": "force_add_admins", "type": "boolean", "default": "true" },
+            { "name": "validate_emails", "type": "boolean", "default": "false" },
+            { "name": "forgot_pass_emails", "type": "boolean", "default": "false" },
+            { "name": "smtp_service", "type": "string", "default": "" },
+            { "name": "smtp_from", "type": "string", "default": "" },
+            { "name": "smtp_user", "type": "string", "default": "" },
+            { "name": "smtp_pass", "type": "string", "default": "" },
+            { "name": "smtp_url", "type": "string", "default": "" },
+            { "name": "debounce_lookup", "type": "boolean", "default": "false" },
+            { "name": "validate_emails_disposable", "type": "boolean", "default": "false" },
+            { "name": "tls_crt", "type": "string", "default": "" },
+            { "name": "tls_key", "type": "string", "default": "" },
+            { "name": "tls_ca", "type": "string", "default": "" },
+            { "name": "tls_passphrase", "type": "string", "default": "" },
 
-            {"name": "skip_history_collections", "type": "string", "default": "audit,oauthtokens,openrpa_instances,workflow_instances,workitems,mailhist"},
-            {"name": "history_delta_count", "type": "number", "default": "1000"},
-            {"name": "history_obj_max_kb_size", "type": "number", "default": "10240"},
-            {"name": "allow_skiphistory", "type": "boolean", "default": "false"},
-            {"name": "max_memory_restart_mb", "type": "number", "default": "0"},
-            {"name": "max_memory_query_mb", "type": "number", "default": "0"},
-            {"name": "max_memory_aggregate_mb", "type": "number", "default": "0"},
-            {"name": "saml_issuer", "type": "string", "default": "the-issuer"},
-            {"name": "wapid_mail", "type": "string", "default": ""},
-            {"name": "wapid_pub", "type": "string", "default": ""},
-            {"name": "wapid_key", "type": "string", "default": ""},
-            {"name": "shorttoken_expires_in", "type": "string", "default": "5m"},
-            {"name": "longtoken_expires_in", "type": "string", "default": "365d"},
-            {"name": "downloadtoken_expires_in", "type": "string", "default": "15m"},
-            {"name": "personalnoderedtoken_expires_in", "type": "string", "default": "365d"},
-            {"name": "agent_images", "type": "NoderedImage[]", "default": "[{\"name\":\"Agent\", \"image\":\"openiap/nodeagent\", \"languages\": [\"nodejs\", \"python\"]}, {\"name\":\"Agent+Chromium\", \"image\":\"openiap/nodechromiumagent\", \"chromium\": true, \"languages\": [\"nodejs\", \"python\"]}, {\"name\":\"NodeRED\", \"image\":\"openiap/noderedagent\", \"port\": 3000}, {\"name\":\"DotNet 6\", \"image\":\"openiap/dotnetagent\", \"languages\": [\"dotnet\"]} , {\"name\":\"PowerShell 7.3\", \"image\":\"openiap/nodeagent:pwsh\", \"languages\": [\"powershell\"]}]"},
-            {"name": "agent_domain_schema", "type": "string", "default": ""},
-            {"name": "agent_node_selector", "type": "string", "default": ""},
-            {"name": "agent_grpc_apihost", "type": "string", "default": ""},
-            {"name": "agent_ws_apihost", "type": "string", "default": ""},
-            {"name": "agent_oidc_config", "type": "string", "default": ""},
-            {"name": "agent_oidc_client_id", "type": "string", "default": ""},
-            {"name": "agent_oidc_client_secret", "type": "string", "default": ""},
-            {"name": "agent_oidc_userinfo_endpoint", "type": "string", "default": ""},
-            {"name": "agent_oidc_issuer", "type": "string", "default": ""},
-            {"name": "agent_oidc_authorization_endpoint", "type": "string", "default": ""},
-            {"name": "agent_oidc_token_endpoint", "type": "string", "default": ""},
-            {"name": "saml_federation_metadata", "type": "string", "default": ""},
-            {"name": "agent_docker_entrypoints", "type": "string", "default": "web"},
-            {"name": "agent_docker_use_project", "type": "boolean", "default": "false"},
-            {"name": "agent_docker_certresolver", "type": "string", "default": ""},
-            {"name": "namespace", "type": "string", "default": ""},
-            {"name": "agent_allow_nodeselector", "type": "boolean", "default": "false"},
+            { "name": "oidc_access_token_ttl", "type": "number", "default": "480" },
+            { "name": "oidc_authorization_code_ttl", "type": "number", "default": "480" },
+            { "name": "oidc_client_credentials_ttl", "type": "number", "default": "480" },
+            { "name": "oidc_refresh_token_ttl", "type": "number", "default": "20160" },
+            { "name": "oidc_session_ttl", "type": "number", "default": "20160" },
 
-            {"name": "otel_measure_nodeid", "type": "boolean", "default": "false"},
-            {"name": "otel_measure_queued_messages", "type": "boolean", "default": "false"},
-            {"name": "otel_measure__mongodb_watch", "type": "boolean", "default": "false"},
-            {"name": "enable_analytics", "type": "boolean", "default": "true"},
-            {"name": "enable_detailed_analytic", "type": "boolean", "default": "false"},
-            {"name": "otel_debug_log", "type": "boolean", "default": "false"},
-            {"name": "otel_warn_log", "type": "boolean", "default": "false"},
-            {"name": "otel_err_log", "type": "boolean", "default": "false"},
-            {"name": "otel_trace_url", "type": "string", "default": ""},
-            {"name": "otel_metric_url", "type": "string", "default": ""},
-            {"name": "otel_trace_interval", "type": "number", "default": "5000"},
-            {"name": "otel_metric_interval", "type": "number", "default": "5000"},
-            {"name": "otel_trace_pingclients", "type": "boolean", "default": "false"},
-            {"name": "otel_trace_dashboardauth", "type": "boolean", "default": "false"},
-            {"name": "otel_trace_include_query", "type": "boolean", "default": "false"},
-            {"name": "otel_trace_connection_ips", "type": "boolean", "default": "false"},
-            {"name": "otel_trace_mongodb_per_users", "type": "boolean", "default": "false"},
-            {"name": "otel_trace_mongodb_query_per_users", "type": "boolean", "default": "false"},
-            {"name": "otel_trace_mongodb_count_per_users", "type": "boolean", "default": "false"},
-            {"name": "otel_trace_mongodb_aggregate_per_users", "type": "boolean", "default": "false"},
-            {"name": "otel_trace_mongodb_insert_per_users", "type": "boolean", "default": "false"},
-            {"name": "otel_trace_mongodb_update_per_users", "type": "boolean", "default": "false"},
-            {"name": "otel_trace_mongodb_delete_per_users", "type": "boolean", "default": "false"},
+            { "name": "oidc_cookie_key", "type": "string", "default": "" },
+            { "name": "api_rate_limit", "type": "boolean", "default": "true" },
+            { "name": "api_rate_limit_points", "type": "number", "default": "20" },
+            { "name": "api_rate_limit_duration", "type": "number", "default": "1" },
+            { "name": "socket_rate_limit", "type": "boolean", "default": "true" },
+            { "name": "socket_rate_limit_points", "type": "number", "default": "30" },
+            { "name": "socket_rate_limit_points_disconnect", "type": "number", "default": "100" },
+            { "name": "socket_rate_limit_duration", "type": "number", "default": "1" },
+            { "name": "socket_error_rate_limit_points", "type": "number", "default": "30" },
+            { "name": "socket_error_rate_limit_duration", "type": "number", "default": "1" },
 
-            {"name": "grpc_keepalive_time_ms", "type": "number", "default": "-1"},
-            {"name": "grpc_keepalive_timeout_ms", "type": "number", "default": "-1"},
-            {"name": "grpc_http2_min_ping_interval_without_data_ms", "type": "number", "default": "-1"},
-            {"name": "grpc_max_connection_idle_ms", "type": "number", "default": "-1"},
-            {"name": "grpc_max_connection_age_ms", "type": "number", "default": "-1"},
-            {"name": "grpc_max_connection_age_grace_ms", "type": "number", "default": "-1"},
-            {"name": "grpc_http2_max_pings_without_data", "type": "number", "default": "-1"},
-            {"name": "grpc_keepalive_permit_without_calls", "type": "number", "default": "-1"},
-            {"name": "grpc_max_receive_message_length", "type": "number", "default": "-1"},
-            {"name": "grpc_max_send_message_length", "type": "number", "default": "-1"},
-            {"name": "validate_user_form", "type": "string", "default": ""}
+            { "name": "client_heartbeat_timeout", "type": "number", "default": "60" },
+            { "name": "client_signin_timeout", "type": "number", "default": "120" },
+            { "name": "client_disconnect_signin_error", "type": "boolean", "default": "false" },
+
+            { "name": "expected_max_roles", "type": "number", "default": "20000" },
+            { "name": "decorate_roles_fetching_all_roles", "type": "boolean", "default": "true" },
+            { "name": "max_recursive_group_depth", "type": "number", "default": "2" },
+            { "name": "update_acl_based_on_groups", "type": "boolean", "default": "true" },
+            { "name": "allow_merge_acl", "type": "boolean", "default": "false" },
+
+            { "name": "multi_tenant", "type": "boolean", "default": "false" },
+            { "name": "enable_guest", "type": "boolean", "default": "false" },
+            { "name": "enable_guest_file_upload", "type": "boolean", "default": "false" },
+
+            { "name": "enable_gitserver", "type": "boolean", "default": "false" },
+            { "name": "enable_gitserver_guest", "type": "boolean", "default": "false" },
+            { "name": "enable_gitserver_guest_create", "type": "boolean", "default": "false" },
+
+
+            { "name": "cleanup_on_delete_customer", "type": "boolean", "default": "false" },
+            { "name": "cleanup_on_delete_user", "type": "boolean", "default": "false" },
+            { "name": "api_bypass_perm_check", "type": "boolean", "default": "false" },
+            { "name": "allow_signin_with_expired_jwt", "type": "boolean", "default": "false" },
+            { "name": "force_audit_ts", "type": "boolean", "default": "false" },
+            { "name": "force_dbusage_ts", "type": "boolean", "default": "false" },
+            { "name": "migrate_audit_to_ts", "type": "boolean", "default": "true" },
+            { "name": "websocket_package_size", "type": "number", "default": "25000" },
+            { "name": "websocket_max_package_count", "type": "number", "default": "1048576" },
+            { "name": "websocket_message_callback_timeout", "type": "number", "default": "3600" },
+            { "name": "websocket_disconnect_out_of_sync", "type": "boolean", "default": "false" },
+            { "name": "protocol", "type": "string", "default": "http" },
+            { "name": "port", "type": "number", "default": "3000" },
+            { "name": "cookie_secret", "type": "string", "default": "NLgUIsozJaxO38ze0WuHthfj2eb1eIEu" },
+            { "name": "max_ace_count", "type": "number", "default": "128" },
+
+            { "name": "amqp_reply_expiration", "type": "number", "default": "60000" },
+            { "name": "amqp_force_queue_prefix", "type": "boolean", "default": "false" },
+            { "name": "amqp_force_exchange_prefix", "type": "boolean", "default": "false" },
+            { "name": "amqp_force_sender_has_read", "type": "boolean", "default": "true" },
+            { "name": "amqp_force_sender_has_invoke", "type": "boolean", "default": "false" },
+            { "name": "amqp_force_consumer_has_update", "type": "boolean", "default": "false" },
+            { "name": "amqp_enabled_exchange", "type": "boolean", "default": "false" },
+            { "name": "amqp_url", "type": "string", "default": "amqp://localhost" },
+            { "name": "amqp_username", "type": "string", "default": "guest" },
+            { "name": "amqp_password", "type": "string", "default": "guest" },
+
+            { "name": "amqp_check_for_consumer", "type": "boolean", "default": "true" },
+            { "name": "amqp_check_for_consumer_count", "type": "boolean", "default": "false" },
+            { "name": "amqp_default_expiration", "type": "number", "default": "60000" },
+            { "name": "amqp_requeue_time", "type": "number", "default": "1000" },
+            { "name": "amqp_dlx", "type": "string", "default": "openflow-dlx" },
+
+            { "name": "mongodb_minpoolsize", "type": "number", "default": "25" },
+            { "name": "mongodb_maxpoolsize", "type": "number", "default": "25" },
+
+            { "name": "skip_history_collections", "type": "string", "default": "audit,oauthtokens,openrpa_instances,workflow_instances,workitems,mailhist" },
+            { "name": "history_delta_count", "type": "number", "default": "1000" },
+            { "name": "history_obj_max_kb_size", "type": "number", "default": "10240" },
+            { "name": "allow_skiphistory", "type": "boolean", "default": "false" },
+            { "name": "max_memory_restart_mb", "type": "number", "default": "0" },
+            { "name": "max_memory_query_mb", "type": "number", "default": "0" },
+            { "name": "max_memory_aggregate_mb", "type": "number", "default": "0" },
+            { "name": "saml_issuer", "type": "string", "default": "the-issuer" },
+            { "name": "wapid_mail", "type": "string", "default": "" },
+            { "name": "wapid_pub", "type": "string", "default": "" },
+            { "name": "wapid_key", "type": "string", "default": "" },
+            { "name": "shorttoken_expires_in", "type": "string", "default": "5m" },
+            { "name": "longtoken_expires_in", "type": "string", "default": "365d" },
+            { "name": "downloadtoken_expires_in", "type": "string", "default": "15m" },
+            { "name": "personalnoderedtoken_expires_in", "type": "string", "default": "365d" },
+            { "name": "agent_images", "type": "NoderedImage[]", "default": "[{\"name\":\"Agent\", \"image\":\"openiap/nodeagent\", \"languages\": [\"nodejs\", \"python\"]}, {\"name\":\"Agent+Chromium\", \"image\":\"openiap/nodechromiumagent\", \"chromium\": true, \"languages\": [\"nodejs\", \"python\"]}, {\"name\":\"NodeRED\", \"image\":\"openiap/noderedagent\", \"port\": 3000}, {\"name\":\"DotNet 6\", \"image\":\"openiap/dotnetagent\", \"languages\": [\"dotnet\"]} , {\"name\":\"PowerShell 7.3\", \"image\":\"openiap/nodeagent:pwsh\", \"languages\": [\"powershell\"]}]" },
+            { "name": "agent_domain_schema", "type": "string", "default": "" },
+            { "name": "agent_node_selector", "type": "string", "default": "" },
+            { "name": "agent_grpc_apihost", "type": "string", "default": "" },
+            { "name": "agent_ws_apihost", "type": "string", "default": "" },
+            { "name": "agent_oidc_config", "type": "string", "default": "" },
+            { "name": "agent_oidc_client_id", "type": "string", "default": "" },
+            { "name": "agent_oidc_client_secret", "type": "string", "default": "" },
+            { "name": "agent_oidc_userinfo_endpoint", "type": "string", "default": "" },
+            { "name": "agent_oidc_issuer", "type": "string", "default": "" },
+            { "name": "agent_oidc_authorization_endpoint", "type": "string", "default": "" },
+            { "name": "agent_oidc_token_endpoint", "type": "string", "default": "" },
+            { "name": "saml_federation_metadata", "type": "string", "default": "" },
+            { "name": "agent_docker_entrypoints", "type": "string", "default": "web" },
+            { "name": "agent_docker_use_project", "type": "boolean", "default": "false" },
+            { "name": "agent_docker_certresolver", "type": "string", "default": "" },
+            { "name": "namespace", "type": "string", "default": "" },
+            { "name": "agent_allow_nodeselector", "type": "boolean", "default": "false" },
+
+            { "name": "otel_measure_nodeid", "type": "boolean", "default": "false" },
+            { "name": "otel_measure_queued_messages", "type": "boolean", "default": "false" },
+            { "name": "otel_measure__mongodb_watch", "type": "boolean", "default": "false" },
+            { "name": "enable_analytics", "type": "boolean", "default": "true" },
+            { "name": "enable_detailed_analytic", "type": "boolean", "default": "false" },
+            { "name": "otel_debug_log", "type": "boolean", "default": "false" },
+            { "name": "otel_warn_log", "type": "boolean", "default": "false" },
+            { "name": "otel_err_log", "type": "boolean", "default": "false" },
+            { "name": "otel_trace_url", "type": "string", "default": "" },
+            { "name": "otel_metric_url", "type": "string", "default": "" },
+            { "name": "otel_trace_interval", "type": "number", "default": "5000" },
+            { "name": "otel_metric_interval", "type": "number", "default": "5000" },
+            { "name": "otel_trace_pingclients", "type": "boolean", "default": "false" },
+            { "name": "otel_trace_dashboardauth", "type": "boolean", "default": "false" },
+            { "name": "otel_trace_include_query", "type": "boolean", "default": "false" },
+            { "name": "otel_trace_connection_ips", "type": "boolean", "default": "false" },
+            { "name": "otel_trace_mongodb_per_users", "type": "boolean", "default": "false" },
+            { "name": "otel_trace_mongodb_query_per_users", "type": "boolean", "default": "false" },
+            { "name": "otel_trace_mongodb_count_per_users", "type": "boolean", "default": "false" },
+            { "name": "otel_trace_mongodb_aggregate_per_users", "type": "boolean", "default": "false" },
+            { "name": "otel_trace_mongodb_insert_per_users", "type": "boolean", "default": "false" },
+            { "name": "otel_trace_mongodb_update_per_users", "type": "boolean", "default": "false" },
+            { "name": "otel_trace_mongodb_delete_per_users", "type": "boolean", "default": "false" },
+
+            { "name": "grpc_keepalive_time_ms", "type": "number", "default": "-1" },
+            { "name": "grpc_keepalive_timeout_ms", "type": "number", "default": "-1" },
+            { "name": "grpc_http2_min_ping_interval_without_data_ms", "type": "number", "default": "-1" },
+            { "name": "grpc_max_connection_idle_ms", "type": "number", "default": "-1" },
+            { "name": "grpc_max_connection_age_ms", "type": "number", "default": "-1" },
+            { "name": "grpc_max_connection_age_grace_ms", "type": "number", "default": "-1" },
+            { "name": "grpc_http2_max_pings_without_data", "type": "number", "default": "-1" },
+            { "name": "grpc_keepalive_permit_without_calls", "type": "number", "default": "-1" },
+            { "name": "grpc_max_receive_message_length", "type": "number", "default": "-1" },
+            { "name": "grpc_max_send_message_length", "type": "number", "default": "-1" },
+            { "name": "validate_user_form", "type": "string", "default": "" }
         ]
         WebSocketClientService.onSignedin(async (_user: TokenUser) => {
             await this.RegisterWatch();
@@ -7758,7 +7757,7 @@ export class ConfigCtrl extends entityCtrl<RPAWorkflow> {
         }
     }
     deletekey(key: string) {
-        delete this.model[key]; 
+        delete this.model[key];
         this.delayedUpdate();
         this.submit();
     }
@@ -7808,7 +7807,7 @@ export class ConfigCtrl extends entityCtrl<RPAWorkflow> {
         if (typeof obj === "number") return "number";
         if (typeof obj === "boolean") return "checkbox";
     }
- 
+
     isobject(object: any) {
         return typeof object === 'object';
     }
@@ -7925,7 +7924,7 @@ export class AgentsCtrl extends entitiesCtrl<Base> {
         if (this.show == "pods") {
             this.knownpods = await NoderedUtil.CustomCommand({ command: "getagentpods" })
             const slugs = this.knownpods.map(x => x.metadata.labels.slug).filter(x => x != null);
-            this.basequery = { _type: "agent", slug: { $in: slugs } };            
+            this.basequery = { _type: "agent", slug: { $in: slugs } };
         } else if (this.show != "all" ) {
             this.basequery = { _type: "agent" };
             this.basequery[this.show] = true;
@@ -8102,15 +8101,15 @@ export class AgentCtrl extends entityCtrl<any> {
         if (this.model.stripeprice == null) this.model.stripeprice = "";
         if ( this.model.schedules == null) this.model.schedules = [];
         if(this.model.environment == null) this.model.environment = {}
-        
+
         // v1.5 to 1.5.1 upgrade, hack
         if(this.model.package != null && this.model.package != ""){
             var p = this.allpackages.find(x=>x._id == this.model.package)
             delete this.model.package;
             if(p != null) {
                 this.model.schedules.push({"packageid": p._id, "name": p.name, "cron": "", "enabled": true, "env": {}})
-            }            
-        } 
+            }
+        }
         this.searchtext = this.model.runasname
         this.ImageUpdated();
         this.RunasUpdated();
@@ -8416,7 +8415,7 @@ export class AgentCtrl extends entityCtrl<any> {
             var lines:any = await NoderedUtil.CustomCommand({ command: "getagentlog", id: this.model._id, name: podname });
             if(lines != null) {
                 lines = ansi_up.ansi_to_html(lines);
-                lines = lines.split("\n") 
+                lines = lines.split("\n")
                 // reverse lines
                 lines = lines.reverse()
             } else {
@@ -8543,7 +8542,7 @@ export class AgentCtrl extends entityCtrl<any> {
                     if(restart) {
                         this.StopAgent(); // no need to await
                         this.StartAgent();
-                    } else if(this.instances.length == 0 && this.model.image != null && this.model.image != "") { 
+                    } else if(this.instances.length == 0 && this.model.image != null && this.model.image != "") {
                         await NoderedUtil.CustomCommand({ command: "startagent", id: this.model._id, name: this.model.slug })
                     }
                 }
@@ -8619,7 +8618,7 @@ export class AgentCtrl extends entityCtrl<any> {
                         this.model.runas = this.searchSelectedItem._id
                     }
                     this.searchFilteredList = [];
-                    if (!this.$scope.$$phase) { this.$scope.$apply(); }                    
+                    if (!this.$scope.$$phase) { this.$scope.$apply(); }
                 }
                 return;
             } else if (this.e.keyCode == 27) { // esc
@@ -8808,7 +8807,7 @@ export class PackageCtrl extends entityCtrl<Base> {
             const ref = this.model.ref;
             // @ts-ignore
             const fileid = this.model.fileid;
-            await this.Upload()            
+            await this.Upload()
             if ((fileid == null || fileid == "") && (repo == null || repo == "") && (ref == null || ref == "")) {
                 throw new Error("File or gitrepo is required")
             }
@@ -8895,7 +8894,7 @@ export class RunPackageCtrl extends entityCtrl<Base> {
         WebSocketClientService.onSignedin(async (user: TokenUser) => {
             this.queuename = "";
             this.packageid = $routeParams.packageid;
-    
+
             if (this.id !== null && this.id !== undefined) {
                 await this.loadData();
             } else {
@@ -8952,7 +8951,7 @@ export class RunPackageCtrl extends entityCtrl<Base> {
                 });
             });
         } catch (error) {
-            this.errormessage = error.message ? error.message : error            
+            this.errormessage = error.message ? error.message : error
         }
     }
     haschrome: boolean = false;
@@ -9143,7 +9142,7 @@ export class QueryCtrl {
     public errorcount: number = 0;
     public loadingollama: boolean = false;
     public loadingdata: boolean = false;
-    
+
     public static $inject = [
         "$rootScope",
         "$scope",
@@ -9228,10 +9227,10 @@ export class QueryCtrl {
         let prompt = "";
         const lastweek = new Date();
         prompt = "Generate mongodb aggregation pipeline, based on the user input, reply with the generated pipeline in json format using syntax `{\"pipeline\": [${pipeline}], \"reasoning\": \"explain why you choose this query\": }`\n" +
-        `Today is ${new Date().toISOString()}\n`;
+            `Today is ${new Date().toISOString()}\n`;
 
-        prompt += 
-        `## Formatting Standards for ASCII Tables
+        prompt +=
+            `## Formatting Standards for ASCII Tables
         - Standardize column widths and text alignment.
         - Include headers for columns.
         - Handle long text through truncation or wrapping, as appropriate.
@@ -9264,7 +9263,7 @@ export class QueryCtrl {
         // "if user asks for modified or updated, use field `_modified`\n" +
         // "IMPORTANT! Never use $loopup. Never remove `_` from field names! \n"
         // "IMPORTANT! Never use $loopup. Never remove _ if field has _ in it\n"
-        prompt += "### User prompt: " + this.searchstring; 
+        prompt += "### User prompt: " + this.searchstring;
         if(this.errormessage != "") {
             console.log("Adding last error and pipeline to prompt")
             this.errorcount++;
@@ -9286,12 +9285,12 @@ export class QueryCtrl {
             json: true,
         }
         try {
-            const result: any = await NoderedUtil.Queue({ 
-                queuename: this.WebSocketClientService.llmchat_queue, replyto: this.queuename, 
-                data: payload, 
-                 striptoken: true });
+            const result: any = await NoderedUtil.Queue({
+                queuename: this.WebSocketClientService.llmchat_queue, replyto: this.queuename,
+                data: payload,
+                striptoken: true });
         } catch (error) {
-            this.errormessage = error.message ? error.message : error;            
+            this.errormessage = error.message ? error.message : error;
         }
     }
     async RunQuery() {
@@ -9312,14 +9311,14 @@ export class QueryCtrl {
             this.keys = [];
             this.errormessage = "";
             if (!this.$scope.$$phase) { this.$scope.$apply(); }
-    
-            this.models = await NoderedUtil.Aggregate({ collectionname: this.collection, 
+
+            this.models = await NoderedUtil.Aggregate({ collectionname: this.collection,
                 aggregates: pipeline
             });
             if(this.models.length > 0) {
                 var __keys = Object.keys(this.models[0]);
                 var _keys = __keys.filter(x => x != "name" && x.startsWith("_") == false);
-    
+
                 if(__keys.includes("_created")) {
                     _keys.unshift("_created");
                 }
@@ -9384,7 +9383,7 @@ export class QueryCtrl {
                             this.loadingollama = false;
                             this.errorcount =0;
                             console.log(data.response);
-                            console.error(error);                        
+                            console.error(error);
                         }
                     } else {
                         console.log(data);
@@ -9394,7 +9393,7 @@ export class QueryCtrl {
                     this.loadingollama = false;
                 } finally {
                     if (!this.$scope.$$phase) { this.$scope.$apply(); }
-                }                
+                }
             }, closedcallback: (msg) => {
                 this.queuename = "";
                 setTimeout(this.RegisterQueue.bind(this), (Math.floor(Math.random() * 6) + 1) * 500);
@@ -9425,7 +9424,7 @@ export class ChatCtrl {
     public loadingollama: boolean = false;
     public loadingdata: boolean = false;
     public starters: string[] = [];
-    
+
     public static $inject = [
         "$sce",
         "$rootScope",
@@ -9511,17 +9510,17 @@ export class ChatCtrl {
         });
         // Watch for changes in your messages array
         $scope.$watchCollection('ctrl.messages', (newMessages: any, oldMessages: any) => {
-        if (newMessages.length !== oldMessages.length) {
-            $timeout(this.scrollToBottom, 100); // Scroll after the DOM update
-        }
-    });
+            if (newMessages.length !== oldMessages.length) {
+                $timeout(this.scrollToBottom, 100); // Scroll after the DOM update
+            }
+        });
     }
     async LoadThread() {
         if(this.threadid != "") {
             var _messages = await NoderedUtil.Query({ collectionname: "llmchat", query: { threadid: this.threadid, "_type": "message" }, top:100 });
             _messages.sort((a, b) => {
                 return a.message.index - b.message.index;
-             });
+            });
             this.messages = _messages.map((x) => x.message);;
             if (!this.$scope.$$phase) { this.$scope.$apply(); }
         }
@@ -9577,7 +9576,7 @@ export class ChatCtrl {
                 var collectionname = message.collectionname;
                 this.collectionname = collectionname;
                 if(pipeline != null && collectionname != null) {
-                    this.models = await NoderedUtil.Aggregate({ collectionname: message.collectionname, 
+                    this.models = await NoderedUtil.Aggregate({ collectionname: message.collectionname,
                         aggregates: pipeline
                     });
                 } else {
@@ -9595,7 +9594,7 @@ export class ChatCtrl {
                     this.models = await NoderedUtil.Query({ collectionname, query, top, projection });
                 } else {
                     this.errormessage = message.content;
-                }                
+                }
             } else if(message.name == "GetCollections") {
                 this.models = await NoderedUtil.ListCollections({});
             } else if(message.name == "RunOpenRPAWorkflow") {
@@ -9618,7 +9617,7 @@ export class ChatCtrl {
                 const rpacommand = {
                     command: "invoke",
                     workflowid: message.workflowid,
-                    data: message.parameters                                        
+                    data: message.parameters
                 }
                 await NoderedUtil.Queue({
                     correlationId: message.correlationId,
@@ -9626,11 +9625,11 @@ export class ChatCtrl {
                     queuename: message.robotid,
                     replyto: this.queuename,
                 })
-            }    
+            }
             if(this.models.length > 0) {
                 var __keys = Object.keys(this.models[0]);
                 var _keys = __keys.filter(x => x != "name" && x.startsWith("_") == false);
-    
+
                 if(__keys.includes("_created")) {
                     _keys.unshift("_created");
                 }
@@ -9669,7 +9668,7 @@ export class ChatCtrl {
     Markdown(text) {
         // @ts-ignore
         var converter = new showdown.Converter(),
-        html = converter.makeHtml(text)
+            html = converter.makeHtml(text)
         if(html != null) {
             html = html.split("\n").join("<br/>");
         }
@@ -9716,7 +9715,7 @@ export class ChatCtrl {
 
         var payload = {
             func: "chat",
-            model: this.llmmodel, 
+            model: this.llmmodel,
             // model: "ollama/mistral",
             // model: "ollama/functionary",
             message: this.chatmessage,
@@ -9724,13 +9723,13 @@ export class ChatCtrl {
             // json: true,
         }
         try {
-            const result: any = await NoderedUtil.Queue({ 
-                queuename: this.WebSocketClientService.llmchat_queue, replyto: this.queuename, 
+            const result: any = await NoderedUtil.Queue({
+                queuename: this.WebSocketClientService.llmchat_queue, replyto: this.queuename,
                 data: payload });
         } catch (error) {
             this.loadingollama = false;
             this.errormessage = error.message ? error.message : error;
-            console.error(error);            
+            console.error(error);
         }
         if (!this.$scope.$$phase) { this.$scope.$apply(); }
     }
@@ -9790,9 +9789,9 @@ export class ChatCtrl {
                                 if(data.message.role == "tool") {
                                     if(data.message.name != "RunOpenRPAWorkflow") {
                                         this.runtool(data.message);
-                                    }                                    
-                                }                            
-                            }                        
+                                    }
+                                }
+                            }
                             this.chatmessage = "";
                             this.loadingollama = false;
                             this.errormessage = "";
@@ -9806,8 +9805,8 @@ export class ChatCtrl {
                                 if(data.message.role == "tool") {
                                     if(data.message.name != "RunOpenRPAWorkflow") {
                                         this.runtool(data.message);
-                                    }                                    
-                                }                            
+                                    }
+                                }
                                 this.errormessage = "";
                             }
                         } else if(data.func == "messages") {
@@ -9826,7 +9825,7 @@ export class ChatCtrl {
                                 this.messages.push(temp);
                             }
                             temp.content += data.response;
-                            this.$timeout(this.scrollToBottom, 100); 
+                            this.$timeout(this.scrollToBottom, 100);
                         } else {
                             if(correlationId != null && correlationId != "") {
                                 var div = document.getElementById(correlationId);
@@ -9835,7 +9834,7 @@ export class ChatCtrl {
                                     if(data.command == "invokesuccess" || data.command == "invokecompleted" ) {
                                         try {
                                             m = JSON.stringify(data.data);
-                                        } catch (error) {                                        
+                                        } catch (error) {
                                         }
                                     } else if(data.command == "timeout") {
                                         m = "TIMEOUT! is robot running ?"
@@ -9850,7 +9849,7 @@ export class ChatCtrl {
                         this.loadingollama = false;
                     } finally {
                         if (!this.$scope.$$phase) { this.$scope.$apply(); }
-                    }                
+                    }
                 }, closedcallback: (msg) => {
                     this.queuename = "";
                     setTimeout(this.RegisterQueue.bind(this), (Math.floor(Math.random() * 6) + 1) * 500);
@@ -9858,7 +9857,7 @@ export class ChatCtrl {
             });
         } catch (error) {
             this.errormessage = error.message ? error.message : error;
-            console.error(error);            
+            console.error(error);
         }
         console.log("RegisterQueue", this.queuename);
     }

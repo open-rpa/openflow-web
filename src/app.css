@@ -281,13 +281,30 @@ textarea{
 }
 
 .shepherd-title {
-  font-size: 20px;
+  font-size: 20px !important;
   padding: 1rem;
 }
 
 .shepherd-text {
-  font-size: 18px;
-  padding: 2rem;
+  font-size: 16px !important;
+  padding: 2rem !important;
+}
+
+.shepherd-button {
+  color: white !important;
+  margin: 10px;
+  padding: 10px !important;
+  background-color: #007bff !important;
+  border-radius: 4px;
+}
+
+.shepherd-button:hover {
+  background-color: #0056b3 !important;
+  /* Optional: darker background on hover */
+}
+
+.btn {
+  margin-bottom: 10px !important;
 }
 
 /* @import "site.css";
