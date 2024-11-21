@@ -128,9 +128,8 @@
     }
 </style> -->
 
-<div ng-repeat="Resource in ctrl.Resources | orderBy: 'order'" ng-show="ctrl.ShowPlans() && ctrl.Resources.length > 0"
-    class="mb-10 ">
-    <div class="row" ng-show="Resource.customerassign == 'singlevariant'">
+<div class="mb-10">
+    <div class="row">
         <div class="col">
             <h6>
                 <b>
@@ -165,6 +164,7 @@
         </div>
     </div>
 </div>
+
 <div ng-repeat="Resource in ctrl.Resources | orderBy: 'order'" ng-show="ctrl.ShowPlans() && ctrl.Resources.length > 0"
     class="mb-10">
     <div class="row border-bottom" ng-show="Resource.customerassign == 'singlevariant'">
