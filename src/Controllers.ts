@@ -8749,7 +8749,7 @@ export class PackagesCtrl extends entitiesCtrl<Base> {
 
 export class PackageCtrl extends entityCtrl<Base> {
     e: any = null;
-    languages: string[] = ["nodejs", "python", "dotnet", "powershell"];
+    languages: string[] = ["nodejs", "python", "dotnet", "rust", "exec", "powershell"];
     oldfileid: string = "";
     gitrepositories: any[];
     gitbranches: any[];
