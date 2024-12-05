@@ -1,6 +1,6 @@
 {
   "name": "openflow-web",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "scripts": {
     "build": "rm -rf dist && mkdir dist -p && cp -r src/* dist && webpack --mode production",

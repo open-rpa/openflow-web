@@ -123,6 +123,9 @@
           this.localenabled = true;
         }
       }
+      this.providers.sort((a, b) => {
+        return a.order - b.order;
+      });
       if (!$scope.$$phase) { $scope.$apply(); }
     };
     this.loadform = function () {

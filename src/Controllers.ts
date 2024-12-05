@@ -2133,6 +2133,10 @@ export class LoginCtrl {
             if (NoderedUtil.IsNullUndefinded(data)) return;
             this.forgot_pass_emails = WebSocketClientService.forgot_pass_emails;
             this.providers = data;
+            this.providers.sort((a, b) => {
+                return a.order - b.order;
+              });
+        
             this.allow_user_registration = WebSocketClientService.allow_user_registration;
             for (let i: number = this.providers.length - 1; i >= 0; i--) {
                 if (this.providers[i].provider == "local") {
@@ -2332,6 +2336,7 @@ export class ProvidersCtrl extends entitiesCtrl<Provider> {
         super($rootScope, $scope, $location, $routeParams, $interval, WebSocketClientService, api, userdata);
         console.debug("ProvidersCtrl");
         this.basequery = { _type: "provider" };
+        this.baseprojection = { name: 1, issuer: 1, order: 1 };
         this.collection = "config";
         this.skipcustomerfilter = true;
         WebSocketClientService.onSignedin((user: TokenUser) => {
@@ -2360,11 +2365,12 @@ export class ProviderCtrl extends entityCtrl<Provider> {
                 this.loadData();
             } else {
                 try {
-                    this.model = new Provider("", "", "", "uri:" + this.WebSocketClientService.domain, "")
+                    this.model = new Provider("", "", "", "uri:" + this.WebSocketClientService.domain, "", 0)
                 } catch (error) {
                     this.model = {} as any;
                     this.model.name = "";
                     this.model._type = "provider";
+                    this.model.order = 0;
                     this.model.issuer = "uri:" + this.WebSocketClientService.domain;
                 }
             }
