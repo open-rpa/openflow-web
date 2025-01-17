@@ -7676,6 +7676,7 @@ export class ConfigCtrl extends entityCtrl<RPAWorkflow> {
             { "name": "otel_warn_log", "type": "boolean", "default": "false" },
             { "name": "otel_err_log", "type": "boolean", "default": "false" },
             { "name": "otel_trace_url", "type": "string", "default": "" },
+            { "name": "otel_log_url", "type": "string", "default": "" },
             { "name": "otel_metric_url", "type": "string", "default": "" },
             { "name": "otel_trace_interval", "type": "number", "default": "5000" },
             { "name": "otel_metric_interval", "type": "number", "default": "5000" },
