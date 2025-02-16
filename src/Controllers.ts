@@ -7648,7 +7648,7 @@ export class ConfigCtrl extends entityCtrl<RPAWorkflow> {
             { "name": "longtoken_expires_in", "type": "string", "default": "365d" },
             { "name": "downloadtoken_expires_in", "type": "string", "default": "15m" },
             { "name": "personalnoderedtoken_expires_in", "type": "string", "default": "365d" },
-            { "name": "agent_images", "type": "NoderedImage[]", "default": "[{\"name\":\"Agent\", \"image\":\"openiap/nodeagent\", \"languages\": [\"nodejs\", \"python\"]}, {\"name\":\"Agent+Chromium\", \"image\":\"openiap/nodechromiumagent\", \"chromium\": true, \"languages\": [\"nodejs\", \"python\"]}, {\"name\":\"NodeRED\", \"image\":\"openiap/noderedagent\", \"port\": 3000}, {\"name\":\"DotNet 6\", \"image\":\"openiap/dotnetagent\", \"languages\": [\"dotnet\"]} , {\"name\":\"PowerShell 7.3\", \"image\":\"openiap/nodeagent:pwsh\", \"languages\": [\"powershell\"]}]" },
+            { "name": "agent_images", "type": "NoderedImage[]", "default": JSON.stringify([{ "name": "Agent", "image": "openiap/nodeagent", "languages": ["nodejs", "exec", "python"] }, { "name": "Agent+Chromium", "image": "openiap/nodechromiumagent", "chromium": true, "languages": ["nodejs", "exec", "python"] }, { "name": "NodeRED", "image": "openiap/noderedagent", "port": 3000 }, { "name": "DotNet 6", "image": "openiap/dotnetagent", "languages": ["nodejs", "exec", "python", "dotnet", "powershell"] }]) },
             { "name": "agent_domain_schema", "type": "string", "default": "" },
             { "name": "agent_node_selector", "type": "string", "default": "" },
             { "name": "agent_grpc_apihost", "type": "string", "default": "" },
