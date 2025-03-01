@@ -186,6 +186,7 @@ export class MenuCtrl {
             this.customer = this.WebSocketClientService.customer;
 
             this.customers = await NoderedUtil.Query({ collectionname: "users", query: { _type: "customer" }, orderby: { "name": 1 }, top: 20 });
+            console.log("customers", this.customers);
             if (this.customers != null && !NoderedUtil.IsNullEmpty(this.user.selectedcustomerid)) {
                 if (this.customers.filter(x => x._id == this.user.selectedcustomerid).length == 0) {
                     this.customers = (await NoderedUtil.Query({ collectionname: "users", query: { _type: "customer", _id: this.user.selectedcustomerid } })).concat(this.customers);
@@ -274,10 +275,14 @@ export class MenuCtrl {
     hasrole(role: string) {
         if (NoderedUtil.IsNullUndefinded(WebSocketClient.instance)) return false;
         if (NoderedUtil.IsNullUndefinded(WebSocketClient.instance.user)) return false;
-        if (role == "customer admins" && !NoderedUtil.IsNullUndefinded(WebSocketClient.instance.user.customerid)) {
-            if (this.customer == null) return false;
-            const hits = WebSocketClient.instance.user.roles.filter(member => member._id == this.customer.admins);
-            if (hits.length == 1) return true;
+        if(!NoderedUtil.IsNullUndefinded(WebSocketClient.instance.user.customerid)) {
+            if (role == "customer admins" && !NoderedUtil.IsNullUndefinded(WebSocketClient.instance.user.customerid)) {
+                for(let i = 0; i < this.customers.length; i++) {
+                    if(this.customers[i]._id == WebSocketClient.instance.user.customerid) {
+                        return true;
+                    }
+                }
+            }
         }
         const hits = WebSocketClient.instance.user.roles.filter(member => member.name == role);
         return (hits.length == 1)
