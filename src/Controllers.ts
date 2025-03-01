@@ -205,11 +205,17 @@ export class MenuCtrl {
             this.user = data;
             this.signedin = true;
 
-            if (this.user.selectedcustomerid == null) {
-                this.customer = null;
-            } else {
+            this.customers = await NoderedUtil.Query({ collectionname: "users", query: { _type: "customer" }, orderby: { "name": 1 }, top: 20 });
+            if(this.customers.length == 1) {
+                this.customer = this.customers[0];
+                this.WebSocketClientService.customer = this.customers[0] as any;
+            } else if (this.user.selectedcustomerid == null) {
+            //     this.customer = null;
+            //     if(this.user.customerid != null) {
+            //         this.WebSocketClientService.customer = this.customers.filter(x => x._id == this.user.customerid)[0] as any;
+            //     }
+            // } else {
                 this.customer = this.WebSocketClientService.customer;
-                this.customers = await NoderedUtil.Query({ collectionname: "users", query: { _type: "customer" }, orderby: { "name": 1 }, top: 20 });
 
                 if (this.customers && !NoderedUtil.IsNullEmpty(this.user.selectedcustomerid)) {
                     if (this.customers.filter(x => x._id == this.user.selectedcustomerid).length == 0) {
@@ -291,6 +297,9 @@ export class MenuCtrl {
         if (NoderedUtil.IsNullUndefinded(WebSocketClient.instance)) return false;
         if (NoderedUtil.IsNullUndefinded(WebSocketClient.instance.user)) return false;
         if (!this.WebSocketClientService.multi_tenant) return false;
+        if(this.customer == null && this.customers.length == 1) {
+            this.customer = this.customers[0];
+        }
         if (this.customer == null || this.customers == null) return false;
         if (this.customers.length != 1) return false;
         const hits = WebSocketClient.instance.user.roles.filter(member => member._id == this.customer.admins);
