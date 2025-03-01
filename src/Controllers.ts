@@ -302,7 +302,7 @@ export class MenuCtrl {
         if (NoderedUtil.IsNullUndefinded(WebSocketClient.instance)) return false;
         if (NoderedUtil.IsNullUndefinded(WebSocketClient.instance.user)) return false;
         if (!this.WebSocketClientService.multi_tenant) return false;
-        if(this.customer == null && this.customers.length == 1) {
+        if(this.customer == null && this.customers != null && this.customers.length == 1) {
             this.customer = this.customers[0];
         }
         if (this.customer == null || this.customers == null) return false;
