@@ -19,6 +19,7 @@ export type chatmessage = {
 }
 
 declare let $: any;
+declare let posthog: any;
 
 function treatAsUTC(date): number {
     const result = new Date(date);
@@ -184,6 +185,15 @@ export class MenuCtrl {
 
 
             this.customer = this.WebSocketClientService.customer;
+            try {
+                if (posthog != null) {
+                    posthog.identify(this.user._id, {
+                        name: this.user.name,
+                        email: this.user.email,
+                    });
+                }
+            } catch (error) {
+            }
 
             this.customers = await NoderedUtil.Query({ collectionname: "users", query: { _type: "customer" }, orderby: { "name": 1 }, top: 20 });
             if(this.customers && this.customers.length == 1) {
@@ -207,6 +217,16 @@ export class MenuCtrl {
             if (event && data) { }
             this.user = data;
             this.signedin = true;
+
+            try {
+                if (posthog != null) {
+                    posthog.identify(this.user._id, {
+                        name: this.user.name,
+                        email: this.user.email,
+                    });
+                }
+            } catch (error) {
+            }
 
             this.customers = await NoderedUtil.Query({ collectionname: "users", query: { _type: "customer" }, orderby: { "name": 1 }, top: 20 });
             if(this.customers && this.customers.length == 1) {
