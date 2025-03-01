@@ -186,7 +186,10 @@ export class MenuCtrl {
             this.customer = this.WebSocketClientService.customer;
 
             this.customers = await NoderedUtil.Query({ collectionname: "users", query: { _type: "customer" }, orderby: { "name": 1 }, top: 20 });
-            console.log("customers", this.customers);
+            if(this.customers && this.customers.length == 1) {
+                this.customer = this.customers[0];
+                this.WebSocketClientService.customer = this.customers[0] as any;
+            }
             if (this.customers != null && !NoderedUtil.IsNullEmpty(this.user.selectedcustomerid)) {
                 if (this.customers.filter(x => x._id == this.user.selectedcustomerid).length == 0) {
                     this.customers = (await NoderedUtil.Query({ collectionname: "users", query: { _type: "customer", _id: this.user.selectedcustomerid } })).concat(this.customers);
@@ -198,7 +201,7 @@ export class MenuCtrl {
                 }
             }
             if (!this.$scope.$$phase) { this.$scope.$apply(); }
-            this.StartNewFeaturesTour(null);
+            // this.StartNewFeaturesTour(null);
         });
         const cleanup2 = this.$scope.$on("refreshtoken", async (event, data) => {
             if (event && data) { }
@@ -206,7 +209,7 @@ export class MenuCtrl {
             this.signedin = true;
 
             this.customers = await NoderedUtil.Query({ collectionname: "users", query: { _type: "customer" }, orderby: { "name": 1 }, top: 20 });
-            if(this.customers.length == 1) {
+            if(this.customers && this.customers.length == 1) {
                 this.customer = this.customers[0];
                 this.WebSocketClientService.customer = this.customers[0] as any;
             } else if (this.user.selectedcustomerid == null) {
@@ -241,7 +244,7 @@ export class MenuCtrl {
                 }
             }
             if (!this.$scope.$$phase) { this.$scope.$apply(); }
-            this.StartNewFeaturesTour(null)
+            // this.StartNewFeaturesTour(null)
             // cleanup();
         });
         this.$scope.$on("setsearch", (event, data) => {
@@ -283,9 +286,11 @@ export class MenuCtrl {
         if (NoderedUtil.IsNullUndefinded(WebSocketClient.instance.user)) return false;
         if(!NoderedUtil.IsNullUndefinded(WebSocketClient.instance.user.customerid)) {
             if (role == "customer admins" && !NoderedUtil.IsNullUndefinded(WebSocketClient.instance.user.customerid)) {
-                for(let i = 0; i < this.customers.length; i++) {
-                    if(this.customers[i]._id == WebSocketClient.instance.user.customerid) {
-                        return true;
+                if(this.customers != null) {
+                    for(let i = 0; i < this.customers.length; i++) {
+                        if(this.customers[i]._id == WebSocketClient.instance.user.customerid) {
+                            return true;
+                        }
                     }
                 }
             }
